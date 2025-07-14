@@ -19,11 +19,13 @@
                 <h1 style="text-align: center; font-size: 300%;">Jopseps</h1>
                 <div class="container">
                     
-                    <img class="bigImage" style="margin-top: 1%;" src="https://avatars.githubusercontent.com/u/125342144?v=4" alt="Jopseps">
+                    <img class="bigImage" id="temmu" style="margin-top: 1%;" src="https://avatars.githubusercontent.com/u/125342144?v=4" alt="Jopseps">
                     
                 </div>
+        <p id="rotationCounter" style="margin-top: 2%; text-align: center; display: none;">0</p>
 
-                <h2 style="text-align: center; font-style: italic; margin-top: 4%;">Real Stuff:</h2>
+
+                <h2 id="realStuff" style="text-align: center; font-style: italic; margin-top: 4%;">Real Stuff:</h2>
                 
                 <div class="interactiveText-wrapper" >
                     <a href="projects.html"><h3 class="interactiveText" style="text-align: right; padding-right: 10%; padding-top: 15px;">See all</h3></a>
@@ -110,6 +112,7 @@
             © 2025 Jopseps. All rights reserved.
         </div>
     </footer>
+    
 
     <style>
         /* Reset */
@@ -228,11 +231,11 @@
             transition: transform 0.3s ease;
         }
 
-        .bigImage:hover{
-            
+        .bigImage.hovered {
             transform: scale(1.1);
-            
         }
+
+
 
         html, body {
             height: 100%;
@@ -343,5 +346,44 @@
 
     </style>
     
+
+    <script>
+        const temmuVar = document.getElementById("temmu");
+        const counter = document.getElementById("rotationCounter");
+        const realStuffVar = document.getElementById("realStuff");
+
+        var rotation = 0;
+
+        let rotationCount = 0;
+        
+
+        temmuVar.addEventListener("mouseover", () => {
+            temmuVar.classList.add("hovered");
+            temmuVar.style.transform = `rotate(${rotation}deg) scale(1.1)`;
+        });
+
+        temmuVar.addEventListener("mouseout", () => {
+            temmuVar.classList.remove("hovered");
+            temmuVar.style.transform = `rotate(${rotation}deg) scale(1)`;
+        });
+
+        temmuVar.addEventListener("click", () => {
+            rotation += 180;
+            rotationCount += 1;
+
+            const scale = temmuVar.classList.contains("hovered") ? 1.1 : 1;
+        
+            temmuVar.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+
+            if(rotationCount >= 10){
+                realStuffVar.style.marginTop = "1.05%";
+                counter.style.display = "block";
+                counter.innerHTML = rotationCount; 
+
+            }
+        });
+        
+    </script>
+
 </html>
 
