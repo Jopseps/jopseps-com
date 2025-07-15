@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <p id="aaaatext" class="textb">aaaa</p>
+<button id="darkModeToggle" onclick="toggleDarkMode()">aaaaaa</button>
+
+    <style>
+        .textb{
+            color: black;
+        }
+        .textb-dark{
+            color: black;
+        }
+
+
+    </style>
+
+    <script>
+        let darkMode = 0;
+        function toggleDarkMode(){
+            if(darkMode == 0)darkMode = 1;
+            else if(darkMode == 1) darkMode = 0;
+            applyMode();
+        }
+
+        function applyMode(){
+            document.getElementsByClassName("textb");
+            
+
+
+        }
+
+
+    </script>
+
+
+
+</html>
+
