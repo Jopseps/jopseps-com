@@ -18,6 +18,11 @@
     <body>
         <div class="site-wrapper">
             <main class="site-content">
+                
+                <div class="container-right">
+                    <button id="darkModeButton">dark mode</button>
+                </div>
+                
 
                 <h1 style="text-align: center; font-size: 300%;">Jopseps</h1>
                 <div class="container">
@@ -142,6 +147,12 @@
             align-items: center;
         }
 
+        .container-right{
+            display: flex;
+            justify-content: right;
+            align-items: right;
+        }
+
         .interactiveText-wrapper{
             display: flex;
             justify-content: flex-end; /* right */
@@ -188,6 +199,16 @@
             transform: scale(1.1);
         }
 
+        
+        #darkModeButton{
+            display: flex;
+            
+            margin-right: 1%;
+            margin-top: 1%;
+
+            margin-bottom: -2.05%;
+
+        }
 
         html, body {
             height: 100%;
@@ -300,6 +321,7 @@
     
 
     <script>
+        // Temmu spin
         const temmuVar = document.getElementById("temmu");
         const counter = document.getElementById("rotationCounter");
         const realStuffVar = document.getElementById("realStuff");
@@ -335,6 +357,10 @@
             }
         });
         
+        // Dark mode
+        let isDarkModeOn = 10;
+
+
     </script>
 
 </html>
