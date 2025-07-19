@@ -20,16 +20,25 @@
                 <a href="index.html"><h3 class="interactiveText" style="text-align: left; font-weight: 900;">Back to Home</h3></a>
             </div>
 
-            <div style="justify-self: center; align-items: center; display: flex;" class="firstPage">
-                <input type="siralama" id="siralamaInput" placeholder="İsmin ne?">
-                <button onclick="switchPage()">enter</button>
+            <div class="container" id="isimBox">
+                <input style="padding: 0.5%; font-size: larger;" type="siralama" id="siralamaInput" placeholder="İsmin ne?">
             </div>
         
 
-            <div style="justify-self: center; align-items: center; display: flex; padding-top: 1%;" class="firstPage" >
-                <input type="siralama" id="siralamaInput"placeholder="YKS sıralaman kaç?">
-                <button onclick="switchPage()">enter</button>
+            <div class="container" style="padding-top: 0.5%;" id="siralamaBox">
+                <input style="padding: 1%; font-size: larger;" type="siralama" id="siralamaInput" placeholder="YKS sıralaman kaç?">
+                <button style="margin-left: 1%; padding: 0.5%; font-size: larger;" onclick="switchPage()">yolla</button>
             </div>
+
+
+            <div class="container" style="padding-top: 0.5%;" id="gonderText">
+                <h1>Şimdi bunları bana whatsapptan gönder</h1>
+            </div>
+
+            <div class="container" style="padding-top: 0.5%;" id="gonderImage">
+                <img src="https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3e5f2a6470bf89b0a2bc3_79.png">
+            </div>
+
         </main>
     </div>
 
@@ -62,12 +71,22 @@
 
 
     <style>
-        .firstPage{
-            visibility: visible;
+        #gonderText{
+        opacity: 0;
+        transition: opacity 3s; 
         }
 
-        .secondPage{
-            visibility: hidden;
+        #gonderText.fadeIn{
+            opacity: 1;
+        }
+
+        #gonderImage{
+        opacity: 0;
+        transition: opacity 3s; 
+        }
+
+        #gonderImage.fadeIn{
+            opacity: 1;
         }
 
 
@@ -252,9 +271,11 @@
     </style>
 
     <script>
+        let hiddenElement1 = document.getElementById("gonderText");
+        let hiddenElement2 = document.getElementById("gonderImage");
         function switchPage(){
-            addEventListener()
-
+            hiddenElement1.classList.toggle('fadeIn');
+            hiddenElement2.classList.toggle('fadeIn');
         }
 
     </script>
