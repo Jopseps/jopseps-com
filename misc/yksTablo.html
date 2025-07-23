@@ -22,7 +22,9 @@
 
             <div style="padding-top: 7%;">
                 <body>
+                    <p class="prevent-select" style="text-align: center; font-family: Arial; font-size: 125%; font: bold;">Abubububu</p>
                     <canvas id="canvas" tabindex="0" width="400px" height="400px"></canvas>
+                    <p class="prevent-select" style="text-align: center; font-family: Arial; font-size: 125%; font: bold;">Abubububu</p>
                     
                 </body>
             </div>
@@ -63,7 +65,7 @@
     <style>
 
         #canvas{
-            border: 1px solid black;
+            /*border: 1px solid black;*/
             display: block;
             margin: 0 auto;
             background: rgb(187, 187, 187);
@@ -71,8 +73,13 @@
 
         }
         
-        #canvas:focus { outline: none; }
+        #canvas:focus{ outline: none; }
 
+        .prevent-select{
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
 
         /* Reset */
         *{
