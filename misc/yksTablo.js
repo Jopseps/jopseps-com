@@ -38,7 +38,8 @@ function drawDot(x, y){
     ctx.fill();
 }
 
-function drawIndividual(individual){
+// retired function
+/*function drawIndividual(individual){
     ctx.beginPath();
     ctx.arc(adjustWidthOffset(individual.value1), adjustHeightOffset(-individual.value2), 2.5, 0, (360/180)*Math.PI);
     let individualColor = individual.color;
@@ -47,7 +48,7 @@ function drawIndividual(individual){
     ctx.stroke();
     ctx.fillStyle = individualColor;
     ctx.fill();
-}
+}*/
 
 let individuals = [];
 
@@ -56,21 +57,47 @@ let tableContent;
 let hoveredIndividual = null;
 
 function drawCanvasThings(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath()
+
+    ctx.fillStyle = "rgba(255, 158, 158, 1)";
+    ctx.fillRect(0, 0, canvas.width/2, canvas.height/2);
+    
+    ctx.fillStyle = "rgba(181, 201, 255, 1)";
+    ctx.fillRect(canvas.width/2, 0, canvas.width/2, canvas.height/2);
+
+    ctx.fillStyle = "rgba(215, 247, 212, 1)";
+    ctx.fillRect(0, canvas.height/2, canvas.width/2, canvas.height/2);
+
+    ctx.fillStyle = "rgba(193, 173, 247, 1)";
+    ctx.fillRect(canvas.width/2, canvas.height/2, canvas.width/2, canvas.height/2);
+
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, canvas.width/2, canvas.height/2);
     ctx.strokeRect(canvas.width/2, 0, canvas.width/2, canvas.height/2);
     ctx.strokeRect(0, canvas.height/2, canvas.width/2, canvas.height/2);
     ctx.strokeRect(canvas.width/2, canvas.height/2, canvas.width/2, canvas.height/2);
+    
 
-    ctx.fillStyle = "black";
-    ctx.fillRect();
+    ctx.fillStyle = "rgba(252, 67, 67, 1)";
+    ctx.font = "20px Arial";
+    
+    ctx.fillText("Hello World", 1*canvas.width/8, 1*canvas.height/4);
+    
+    ctx.fillStyle = "rgba(73, 111, 212, 1)";
+    ctx.fillText("Hello World", 5*canvas.width/8, 1*canvas.height/4);
+
+    ctx.fillStyle = "rgba(68, 161, 59, 1)";
+    ctx.fillText("Hello World", 1*canvas.width/8, 3*canvas.height/4);
+
+    ctx.fillStyle = "rgba(100, 70, 184, 1)";
+    ctx.fillText("Hello World", 5*canvas.width/8, 3*canvas.height/4);
 
 }
 
 function drawAllIndividuals(){
     drawCanvasThings();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
     for(let i = 0; i < individuals.length; i++){
         if(i === hoveredIndividual){
             drawIndividual(individuals[i], true);

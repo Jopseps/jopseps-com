@@ -22,7 +22,7 @@
 
             <div style="padding-top: 7%;">
                 <body>
-                    <canvas id="canvas" width="400px" height="400px"></canvas>
+                    <canvas id="canvas" tabindex="0" width="400px" height="400px"></canvas>
                     
                 </body>
             </div>
@@ -67,7 +67,10 @@
             display: block;
             margin: 0 auto;
             background: rgb(187, 187, 187);
-        }   
+            outline: none; 
+        }
+        
+        #canvas:focus { outline: none; }
 
 
         /* Reset */
