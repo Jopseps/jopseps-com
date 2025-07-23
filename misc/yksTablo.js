@@ -1,6 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+
 class individual{
     individualsName;
     value1;
@@ -29,7 +30,7 @@ function adjustHeightOffset(position){
 
 function drawDot(x, y){
     ctx.beginPath();
-    ctx.arc(adjustWidthOffset(x), adjustHeightOffset(-y), 2.5, 0, (360/180)*Math.PI);
+    ctx.arc(adjustWidthOffset(x), adjustHeightOffset(-y), 4.5, 0, (360/180)*Math.PI);
     color = "black";
     ctx.moveTo(adjustWidthOffset(x), adjustHeightOffset(y));
     ctx.strokeStyle = color;
@@ -41,7 +42,7 @@ function drawDot(x, y){
 // retired function
 /*function drawIndividual(individual){
     ctx.beginPath();
-    ctx.arc(adjustWidthOffset(individual.value1), adjustHeightOffset(-individual.value2), 2.5, 0, (360/180)*Math.PI);
+    ctx.arc(adjustWidthOffset(individual.value1), adjustHeightOffset(-individual.value2), 4.5, 0, (360/180)*Math.PI);
     let individualColor = individual.color;
     ctx.moveTo(adjustWidthOffset(individual.value1), adjustHeightOffset(-individual.value2));
     ctx.strokeStyle = individualColor;
@@ -112,13 +113,11 @@ function drawAllIndividuals(){
 function drawIndividual(individual, isHovered){
     ctx.beginPath();
     // if : true : false
-    const radius = isHovered ? 7 : 2.5;
+    let radius = isHovered ? 8 : 4.5;
     const x = adjustWidthOffset(individual.value1);
     const y = adjustHeightOffset(-individual.value2);
     ctx.arc(x, y, radius, 0, (360/180) * Math.PI);
-    ctx.strokeStyle = individual.color;
     ctx.fillStyle = individual.color;
-    ctx.stroke();
     ctx.fill();
 }
 
