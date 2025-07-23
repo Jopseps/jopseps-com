@@ -82,28 +82,33 @@ function drawCanvasThings(){
     ctx.strokeRect(canvas.width/2, canvas.height/2, canvas.width/2, canvas.height/2);
     
 
-    ctx.fillStyle = "rgba(252, 67, 67, 1)";
+    let text1 = "Denemeci Eşşek";
+    let text2 = "Çalışkan Denemeci";
+    let text3 = "Eşşek Testçi";
+    let text4 = "Çalışkan Testçi";
+
     ctx.font = "20px Arial";
-    
-    ctx.fillText("Hello World", 1*canvas.width/8, 1*canvas.height/4);
+
+    ctx.fillStyle = "rgba(252, 67, 67, 1)";
+    ctx.fillText(text1, 1*canvas.width/8 - text1.length * 1.65, 1*canvas.height/4);
     
     ctx.fillStyle = "rgba(73, 111, 212, 1)";
-    ctx.fillText("Hello World", 5*canvas.width/8, 1*canvas.height/4);
+    ctx.fillText(text2, 5*canvas.width/8 - text2.length * 1.8, 1*canvas.height/4);
 
     ctx.fillStyle = "rgba(68, 161, 59, 1)";
-    ctx.fillText("Hello World", 1*canvas.width/8, 3*canvas.height/4);
+    ctx.fillText(text3, 1*canvas.width/8 - text3.length * 0.7, 3*canvas.height/4);
 
     ctx.fillStyle = "rgba(100, 70, 184, 1)";
-    ctx.fillText("Hello World", 5*canvas.width/8, 3*canvas.height/4);
+    ctx.fillText(text4, 5*canvas.width/8 - text4.length * 1.35, 3*canvas.height/4);
 
     ctx.fillStyle = "rgba(0, 0, 0, 1)";
     /*ctx.fillText("Abubububu", canvas.width/2 - 51, canvas.height/24);
 
     ctx.fillText("Abubububu", canvas.width/2 - 51, 95 * canvas.height/96);*/
 
-    ctx.fillText("Abubububu", 3, canvas.height/2 - 5);
+    ctx.fillText("Eşşek", 3, canvas.height/2 - 5);
 
-    ctx.fillText("Abubububu", canvas.width - 105, canvas.height/2 - 5);
+    ctx.fillText("Çalışkan", canvas.width - 81, canvas.height/2 - 5);
 
 }
 
