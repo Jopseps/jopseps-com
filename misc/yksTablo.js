@@ -1,6 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const paddingVertical = 10;
 
 class individual{
     individualsName;
@@ -94,6 +95,15 @@ function drawCanvasThings(){
 
     ctx.fillStyle = "rgba(100, 70, 184, 1)";
     ctx.fillText("Hello World", 5*canvas.width/8, 3*canvas.height/4);
+
+    ctx.fillStyle = "rgba(0, 0, 0, 1)";
+    ctx.fillText("Abubububu", canvas.width/2 - 50, canvas.height/24);
+
+    ctx.fillText("Abubububu", canvas.width/2 - 50, 95 * canvas.height/96);
+
+    ctx.fillText("Abubububu", 3, canvas.height/2 - 5);
+
+    ctx.fillText("Abubububu", canvas.width - 105, canvas.height/2 - 5);
 
 }
 
