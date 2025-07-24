@@ -189,26 +189,35 @@ canvas.addEventListener("mouseleave", function () {
     drawAllIndividuals();
 });
 
+let yksTabloData = {
+  "people": [
+    { "individualsName": "Ege", "value1": 5, "value2": 5, "color": "red"},
+    { "individualsName": "Hasan", "value1": 3, "value2": 7, "color": "blue"},
+    { "individualsName": "Bazinga", "value1": -3, "value2": -9, "color": "white"},
+    { "individualsName": "Buzingen", "value1": -10, "value2": 10, "color": "green"},
+    { "individualsName": "Test", "value1": 8, "value2": 8, "color": "black"},
+    { "individualsName": "Labubububuub", "value1": 9, "value2": 9, "color": "black"}
+  ]
+}
 
 
-fetch("yksTabloData.json")
-    .then(response => response.json())
-    .then(data => {
-        tableContent = data;
 
-        const size = tableContent.people.length;
-        
-        for(let i = 0; i < size; i++){
-            individuals[i] = new individual(
-                tableContent.people[i].individualsName,
-                tableContent.people[i].value1,
-                tableContent.people[i].value2,
-                tableContent.people[i].color);
-            console.log(individuals[i].individualsName);
-        }
-        console.log(size);
-        drawAllIndividuals();
-    });
+
+tableContent = yksTabloData;
+
+const size = tableContent.people.length;
+
+for(let i = 0; i < size; i++){
+    individuals[i] = new individual(
+        tableContent.people[i].individualsName,
+        tableContent.people[i].value1,
+        tableContent.people[i].value2,
+        tableContent.people[i].color);
+    console.log(individuals[i].individualsName);
+}
+console.log(size);
+drawAllIndividuals();
+
 
 
 const express = require('express');
