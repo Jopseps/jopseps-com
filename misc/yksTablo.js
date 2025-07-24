@@ -1,6 +1,15 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+
+
+fetch('/update', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ "individualsName": "Buzinga", "value1": 2, "value2": -5, "color": "blue"})
+});
+
+
 const padding = 40
 
 class individual{
@@ -146,10 +155,17 @@ function drawTextbox(individual){
     ctx.fillStyle = "white";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
-    ctx.fillRect(x + 10, y - 20, textWidth + padding * 2, 24);
-    ctx.strokeRect(x + 10, y - 20, textWidth + padding * 2, 24);
+
+
+    ctx.fillRect(x + (individual.value1 < 8 ? 10 : -22 - textWidth), (individual.value2 < 8 ? y - 20 : y - 2.5), textWidth + padding * 2, 24);
+    ctx.strokeRect(x + (individual.value1 < 8 ? 10 : -22 - textWidth), (individual.value2 < 8 ? y - 20 : y - 2.5), textWidth + padding * 2, 24);
     ctx.fillStyle = "black";
-    ctx.fillText(text, x + 10 + padding, y - 20 + 16);
+    ctx.fillText(text, x + (individual.value1 < 8 ? 10 : -22 - textWidth) + padding, (individual.value2 < 8 ? y - 20 : y - 2.5) + 16);
+
+    
+
+    
+    
 }
 
 canvas.addEventListener("mousemove", function (e){
@@ -196,6 +212,30 @@ fetch("yksTabloData.json")
         console.log(size);
         drawAllIndividuals();
     });
+
+
+const express = require('express');
+const fs = require('fs');
+const app = express();
+app.use(express.json());
+
+app.post('/update', (req, res) => {
+  let data = JSON.parse(fs.readFileSync('yksTabloData.json'));
+  data.users.push(req.body);
+  fs.writeFileSync('yksTabloData.json', JSON.stringify(data, null, 2));
+  res.send({ success: true });
+});
+
+app.listen(3000, () => console.log("Server çalışıyor") );
+
+
+
+
+
+function addToData(individual){
+
+
+}
 
 
 /*let testDividual = new individual("testman", 4, 7, "red");
