@@ -1,0 +1,1 @@
+const variableBox = document.getElementById("variable");
