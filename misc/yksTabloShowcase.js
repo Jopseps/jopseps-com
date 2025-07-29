@@ -3,12 +3,6 @@ const ctx = canvas.getContext("2d");
 
 
 
-fetch('/update', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ "individualsName": "Buzinga", "value1": 2, "value2": -5, "color": "blue"})
-});
-
 
 const padding = 40
 
@@ -200,9 +194,6 @@ let yksTabloData = {
   ]
 }
 
-
-
-
 tableContent = yksTabloData;
 
 const size = tableContent.people.length;
@@ -219,39 +210,26 @@ console.log(size);
 drawAllIndividuals();
 
 
+const enterButton = document.getElementById("enterButton");
 
-const express = require('express');
-const fs = require('fs');
-const app = express();
-app.use(express.json());
-
-app.post('/update', (req, res) => {
-  let data = JSON.parse(fs.readFileSync('yksTabloData.json'));
-  data.users.push(req.body);
-  fs.writeFileSync('yksTabloData.json', JSON.stringify(data, null, 2));
-  res.send({ success: true });
+enterButton.addEventListener("click", () => {
+    addToData();
 });
 
-app.listen(3000, () => console.log("Server running") );
+function addToData(){
+    let enteredName = document.getElementById("individualsNameInput").value
+    let enteredValue1 = document.getElementById("value1Selecter").value
+    let enteredValue2 = document.getElementById("value2Selecter").value
 
+    individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
+    drawAllIndividuals();
 
-
-
-
-function addToData(individual){
-
-
+    console.log("individual writed");
 }
 
 
-/*let testDividual = new individual("testman", 4, 7, "red");
-drawIndividual(testDividual);
-drawDot(5,3)
-drawDot(-4,-7)*/
+
 
 console.log(canvasHeight);
 console.log(adjustWidthOffset(5));
 console.log(adjustHeightOffset(3));
-
-console.log(individuals[0].individualsName);
-console.log(tableContent.people.length)
