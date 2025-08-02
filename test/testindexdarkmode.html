@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <body class="background">
+
+        <link rel="stylesheet" href="../files/styles.css">
+
+        <title>Jopseps</title>
+        <link rel="icon" type="image/x-icon" href="https://github.com/Jopseps/jopseps-com/blob/main/files/realtemmu.png?raw=true">
+
+    </head>
+    
+    <div class="topNavigation">
+        <!--Real-->
+        
+    </div>
+
+    <body>
+        <div class="site-wrapper">
+            <main class="site-content">
+                
+                <div class="container-right">
+                    <button id="darkModeButton" onclick="switchColorScheme()">dark mode</button>
+                </div>
+                
+
+                <h1 style="text-align: center; font-size: 300%;" class="straightText">Jopseps</h1>
+                <div class="container">
+                    
+                    <img class="bigImage" id="temmu" style="margin-top: 1%;" src="https://avatars.githubusercontent.com/u/125342144?v=4" alt="Jopseps">
+                    
+                </div>
+        <p id="rotationCounter" style="margin-top: 2%; text-align: center; display: none;">0</p>
+
+
+                <h2 id="realStuff" style="text-align: center; font-style: italic; margin-top: 4%;" class="straightText">Real Stuff:</h2>
+                
+                <div class="interactiveText-wrapper" >
+                    <a href="projects.html"><h3 class="interactiveText" style="text-align: right; padding-right: 10%; padding-top: 15px;">See all</h3></a>
+                </div>
+
+                <div class="projects-grid">
+                    <a href="https://github.com/Jopseps/jopseps-com">
+                        <div class="project-card">
+                            <img src="https://static.toiimg.com/thumb/110965104/Water-bodies.jpg?width=636&height=358&resize=4" alt="Project Image">
+                            <div class="project-info">
+                                <h3>project title</h3>
+                                <p>description</p>
+                                
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Jopseps/jopseps-com">
+                        <div class="project-card">
+                            <img src="https://static.toiimg.com/thumb/110965104/Water-bodies.jpg?width=636&height=358&resize=4" alt="Project Image">
+                            <div class="project-info">
+                                <h3>project title</h3>
+                                <p>description</p>
+                                
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Jopseps/jopseps-com">
+                        <div class="project-card">
+                            <img src="https://static.toiimg.com/thumb/110965104/Water-bodies.jpg?width=636&height=358&resize=4" alt="Project Image">
+                            <div class="project-info">
+                                <h3>project title</h3>
+                                <p>description</p>
+                                
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Jopseps/jopseps-com">
+                        <div class="project-card">
+                            <img src="https://static.toiimg.com/thumb/110965104/Water-bodies.jpg?width=636&height=358&resize=4" alt="Project Image">
+                            <div class="project-info">
+                                <h3>project title</h3>
+                                <p>description</p>
+                                
+                            </div>
+                        </div>
+                    </a>
+
+                    
+
+                    
+                </div>
+                
+                <p style="padding-left: 5px;" class="straightText">Riyal</p>
+            
+            </main>
+        </div>
+    </body>
+
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Me</h4>
+                <p>Yusuf Mert</p>
+                </div>
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <p>E-mail: <a href="mailto:test@testmail.com">test@testmail.com</a></p>
+                        <p>Instagram: <a href="https://www.instagram.com/ataturkvideo/" target="_blank">@test</a></p>
+                    </div>
+                    <div class="footer-section">
+                     <h4>Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+        <div class="footer-bottom">
+            © 2025 Jopseps. All rights reserved.
+        </div>
+    </footer>
+    
+
+    <script>
+        // Temmu spin
+        const temmuVar = document.getElementById("temmu");
+        const counter = document.getElementById("rotationCounter");
+        const realStuffVar = document.getElementById("realStuff");
+
+        var rotation = 0;
+
+        let rotationCount = 0;
+        
+
+        temmuVar.addEventListener("mouseover", () => {
+            temmuVar.classList.add("hovered");
+            temmuVar.style.transform = `rotate(${rotation}deg) scale(1.1)`;
+        });
+
+        temmuVar.addEventListener("mouseout", () => {
+            temmuVar.classList.remove("hovered");
+            temmuVar.style.transform = `rotate(${rotation}deg) scale(1)`;
+        });
+
+        temmuVar.addEventListener("click", () => {
+            rotation += 180;
+            rotationCount += 1;
+
+            const scale = temmuVar.classList.contains("hovered") ? 1.1 : 1;
+        
+            temmuVar.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+
+            if(rotationCount >= 10){
+                realStuffVar.style.marginTop = "1.05%";
+                counter.style.display = "block";
+                counter.innerHTML = rotationCount;
+
+            }
+        });
+        
+
+        // Dark mode
+        let colorScheme;
+
+        if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+            colorScheme = "dark";
+        }else{
+            colorScheme = "light";
+        }
+
+        console.log(colorScheme);
+        applyColorScheme();
+
+        function switchColorScheme(){
+            if(colorScheme === "dark"){
+                colorScheme = "light";
+
+            }
+            else{
+                colorScheme = "dark";
+            }
+            
+            console.log(colorScheme);
+            applyColorScheme();
+
+        }
+
+        function applyColorScheme(){
+            document.querySelector(".background").style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "rgb(187, 187, 187)";
+            document.getElementById("darkModeButton").innerHTML = (colorScheme === "dark") ? "light mode" : "dark mode";
+            
+            let straightTexts = document.querySelectorAll(".straightText");
+
+            straightTexts.forEach(straightText =>{
+                straightText.style.color = (colorScheme === "dark") ? "white" : "black";
+            });
+
+            document.querySelector(".bigImage").style.borderColor = (colorScheme === "dark") ? "white" : "black";
+
+            let interactiveTexts = document.querySelectorAll(".interactiveText");
+
+            interactiveTexts.forEach(iText =>{
+                iText.style.color = (colorScheme === "dark") ? "white" : "black";
+            });
+
+
+            let projectCards = document.querySelectorAll(".project-card");
+
+            projectCards.forEach(projectCard =>{
+                projectCard.style.backgroundColor = (colorScheme === "dark") ? "rgb(128, 128, 128)" : "rgb(255, 255, 255)";
+                projectCard.style.borderColor = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(204, 204, 204)";
+            });
+
+            let projectCardsP = document.querySelectorAll(".project-card p");
+
+            projectCardsP.forEach(projectCard =>{
+                projectCard.style.color = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(85, 85, 85)";
+                
+            });
+            
+        }
+        
+
+        
+        
+
+
+    </script>
+
+</html>
+
