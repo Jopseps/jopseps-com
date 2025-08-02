@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <body style="background-color: rgb(187, 187, 187);">
+        <body class="background">
 
         <link rel="stylesheet" href="files/styles.css">
 
@@ -22,11 +22,11 @@
             <main class="site-content">
                 
                 <div class="container-right">
-                    <button id="darkModeButton">dark mode</button>
+                    <button id="darkModeButton" onclick="switchColorScheme()">dark mode</button>
                 </div>
                 
 
-                <h1 style="text-align: center; font-size: 300%;">Jopseps</h1>
+                <h1 style="text-align: center; font-size: 300%;" class="straightText">Jopseps</h1>
                 <div class="container">
                     
                     <img class="bigImage" id="temmu" style="margin-top: 1%;" src="https://avatars.githubusercontent.com/u/125342144?v=4" alt="Jopseps">
@@ -35,7 +35,7 @@
         <p id="rotationCounter" style="margin-top: 2%; text-align: center; display: none;">0</p>
 
 
-                <h2 id="realStuff" style="text-align: center; font-style: italic; margin-top: 4%;">Real Stuff:</h2>
+                <h2 id="realStuff" style="text-align: center; font-style: italic; margin-top: 4%;" class="straightText">Real Stuff:</h2>
                 
                 <div class="interactiveText-wrapper" >
                     <a href="projects.html"><h3 class="interactiveText" style="text-align: right; padding-right: 10%; padding-top: 15px;">See all</h3></a>
@@ -91,12 +91,12 @@
                     
                 </div>
                 
-                <p style="padding-left: 5px;">Riyal</p>
+                <p style="padding-left: 5px;" class="straightText">Riyal</p>
             
             </main>
         </div>
     </body>
-    
+
 
     <footer class="site-footer">
         <div class="footer-content">
@@ -161,8 +161,71 @@
             }
         });
         
+
         // Dark mode
-        let isDarkModeOn = 10;
+        let colorScheme;
+
+        if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+            colorScheme = "dark";
+        }else{
+            colorScheme = "light";
+        }
+
+        console.log(colorScheme);
+        applyColorScheme();
+
+        function switchColorScheme(){
+            if(colorScheme === "dark"){
+                colorScheme = "light";
+
+            }
+            else{
+                colorScheme = "dark";
+            }
+            
+            console.log(colorScheme);
+            applyColorScheme();
+
+        }
+
+        function applyColorScheme(){
+            document.querySelector(".background").style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "rgb(187, 187, 187)";
+            document.getElementById("darkModeButton").innerHTML = (colorScheme === "dark") ? "light mode" : "dark mode";
+            
+            let straightTexts = document.querySelectorAll(".straightText");
+
+            straightTexts.forEach(straightText =>{
+                straightText.style.color = (colorScheme === "dark") ? "white" : "black";
+            });
+
+            document.querySelector(".bigImage").style.borderColor = (colorScheme === "dark") ? "white" : "black";
+
+            let interactiveTexts = document.querySelectorAll(".interactiveText");
+
+            interactiveTexts.forEach(iText =>{
+                iText.style.color = (colorScheme === "dark") ? "white" : "black";
+            });
+
+
+            let projectCards = document.querySelectorAll(".project-card");
+
+            projectCards.forEach(projectCard =>{
+                projectCard.style.backgroundColor = (colorScheme === "dark") ? "rgb(128, 128, 128)" : "rgb(255, 255, 255)";
+                projectCard.style.borderColor = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(204, 204, 204)";
+            });
+
+            let projectCardsP = document.querySelectorAll(".project-card p");
+
+            projectCardsP.forEach(projectCard =>{
+                projectCard.style.color = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(85, 85, 85)";
+                
+            });
+            
+        }
+        
+
+        
+        
 
 
     </script>
