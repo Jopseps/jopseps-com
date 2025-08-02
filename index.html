@@ -32,7 +32,7 @@
                     <img class="bigImage" id="temmu" style="margin-top: 1%;" src="https://avatars.githubusercontent.com/u/125342144?v=4" alt="Jopseps">
                     
                 </div>
-        <p id="rotationCounter" style="margin-top: 2%; text-align: center; display: none;">0</p>
+        <p id="rotationCounter" style="margin-top: 2%; text-align: center; display: none;" class="straightText">0</p>
 
 
                 <h2 id="realStuff" style="text-align: center; font-style: italic; margin-top: 4%;" class="straightText">Real Stuff:</h2>
@@ -124,111 +124,8 @@
     </footer>
     
 
-    <script>
-        // Temmu spin
-        const temmuVar = document.getElementById("temmu");
-        const counter = document.getElementById("rotationCounter");
-        const realStuffVar = document.getElementById("realStuff");
-
-        var rotation = 0;
-
-        let rotationCount = 0;
-        
-
-        temmuVar.addEventListener("mouseover", () => {
-            temmuVar.classList.add("hovered");
-            temmuVar.style.transform = `rotate(${rotation}deg) scale(1.1)`;
-        });
-
-        temmuVar.addEventListener("mouseout", () => {
-            temmuVar.classList.remove("hovered");
-            temmuVar.style.transform = `rotate(${rotation}deg) scale(1)`;
-        });
-
-        temmuVar.addEventListener("click", () => {
-            rotation += 180;
-            rotationCount += 1;
-
-            const scale = temmuVar.classList.contains("hovered") ? 1.1 : 1;
-        
-            temmuVar.style.transform = `rotate(${rotation}deg) scale(${scale})`;
-
-            if(rotationCount >= 10){
-                realStuffVar.style.marginTop = "1.05%";
-                counter.style.display = "block";
-                counter.innerHTML = rotationCount;
-
-            }
-        });
-        
-
-        // Dark mode
-        let colorScheme;
-
-        if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-            colorScheme = "dark";
-        }else{
-            colorScheme = "light";
-        }
-
-        console.log(colorScheme);
-        applyColorScheme();
-
-        function switchColorScheme(){
-            if(colorScheme === "dark"){
-                colorScheme = "light";
-
-            }
-            else{
-                colorScheme = "dark";
-            }
-            
-            console.log(colorScheme);
-            applyColorScheme();
-
-        }
-
-        function applyColorScheme(){
-            document.querySelector(".background").style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "rgb(187, 187, 187)";
-            document.getElementById("darkModeButton").innerHTML = (colorScheme === "dark") ? "light mode" : "dark mode";
-            
-            let straightTexts = document.querySelectorAll(".straightText");
-
-            straightTexts.forEach(straightText =>{
-                straightText.style.color = (colorScheme === "dark") ? "white" : "black";
-            });
-
-            document.querySelector(".bigImage").style.borderColor = (colorScheme === "dark") ? "white" : "black";
-
-            let interactiveTexts = document.querySelectorAll(".interactiveText");
-
-            interactiveTexts.forEach(iText =>{
-                iText.style.color = (colorScheme === "dark") ? "white" : "black";
-            });
-
-
-            let projectCards = document.querySelectorAll(".project-card");
-
-            projectCards.forEach(projectCard =>{
-                projectCard.style.backgroundColor = (colorScheme === "dark") ? "rgb(128, 128, 128)" : "rgb(255, 255, 255)";
-                projectCard.style.borderColor = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(204, 204, 204)";
-            });
-
-            let projectCardsP = document.querySelectorAll(".project-card p");
-
-            projectCardsP.forEach(projectCard =>{
-                projectCard.style.color = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(85, 85, 85)";
-                
-            });
-            
-        }
-        
-
-        
-        
-
-
-    </script>
+    <script src="files/js/temmuspin.js"></script>
+    <script src="files/js/features.js"></script>
 
 </html>
 

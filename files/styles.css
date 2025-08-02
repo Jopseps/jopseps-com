@@ -156,15 +156,15 @@
             margin: 0 0 10px;
         }
 
-        .project-info p {
+        .project-info p{
             font-size: 14px;
             color: rgb(85, 85, 85);
         }
 
-        .project-card-P {
+        .project-card-P{
             max-width: 400px;
-            background-color: #fff;
-            border: 2px solid #ccc;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid rgb(204, 204, 204);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
