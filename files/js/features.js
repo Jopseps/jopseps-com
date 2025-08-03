@@ -7,15 +7,15 @@
         let colorScheme;
         let savedTheme = localStorage.getItem("theme");
 
-        if (savedTheme === null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        if(savedTheme !== "dark" && savedTheme !== "light"){
+            if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
                 colorScheme = "dark";
-            } else {
+            }else{
                 colorScheme = "light";
             }
             localStorage.setItem("theme", colorScheme);
             savedTheme = colorScheme;
-        } else {
+        }else{
             colorScheme = savedTheme;
         }
 
@@ -32,7 +32,10 @@
             else{
                 colorScheme = "dark";
             }
-            
+
+            savedTheme = colorScheme;
+            localStorage.setItem("theme", savedTheme);
+
             console.log(colorScheme);
             applyColorScheme();
 
