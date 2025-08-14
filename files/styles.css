@@ -98,24 +98,24 @@
 
         }
 
-        html, body {
+        html, body{
             height: 100%;
             margin: 0;
             padding: 0;
         }
 
 
-        .site-wrapper {
+        .site-wrapper{
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        .site-content {
+        .site-content{
             flex: 1;
         }
 
-        .projects-grid {
+        .projects-grid{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             row-gap: 5px;
@@ -125,8 +125,14 @@
             padding-left: 5%;
             padding-right: 5%;
         }
+
+        .project-wrapper{
+            max-width: 400px;
+            display: inline-block;
+            overflow: visible;
+        }
         
-        .project-card {
+        .project-card{
             max-width: 400px;
             background-color: rgb(255, 255, 255);
             border: 2px solid rgb(204, 204, 204);
@@ -136,11 +142,15 @@
             transition: transform 0.3s ease;
             margin: 20px auto;
             display: block;
+            transform-origin: center;
         }
 
-        .project-card:hover {
+        .project-card:hover{
             transform: scale(1.1);
+            clip-path: inset(0);
         }
+
+        
 
         .project-card img {
             width: 100%;
