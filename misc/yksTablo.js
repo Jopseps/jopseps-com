@@ -198,6 +198,7 @@ fetch("yksTabloData.json")
                 tableContent.people[i].value1,
                 tableContent.people[i].value2,
                 tableContent.people[i].color);
+                
             console.log(individuals[i].individualsName);
         }
         console.log(size);
@@ -206,20 +207,34 @@ fetch("yksTabloData.json")
 
 function checkIfSamePlace(x,y){
     let sameList = [];
-    for(let i = 0; i < size; i++){
-            if(x === individuals[i].value1 && y === individuals[i].value2){
-                console.log("same place found: ", individuals[i].individualsName);
-                sameList.push(individuals[i]);
-                
-            }
+    console.log("individuals.length", individuals.length)
+    for(let i = 0; i < individuals.length; i++){
+        console.log("searching");
+
+        if(x == individuals[i].value1 && y == individuals[i].value2){
+            console.log("same place found: ", individuals[i].individualsName);
+            sameList.push(individuals[i]);
             
         }
-    if(sameList.length > 0) return sameList;    
+            
+    }
+    if(sameList.length > 0) return sameList;        
     else return 0;
+}
+
+function writeSamePlaceList(list){
+    let writedRegex = " ";
+    
+    for(let i = 0; i < list.length; i++){
+        writedRegex += `<li>${list[i].individualsName}<li>`
+
+    }
+    listPlace.innerHTML = writedRegex;
 }
 
 const enterButton = document.getElementById("enterButton");
 const samePlaceDiv = document.getElementById("samePlaceDiv");
+const listPlace = document.getElementById("listPlace");
 
 enterButton.addEventListener("click", () => {
     addToData();
@@ -231,6 +246,7 @@ function addToData(){
     let enteredValue1 = document.getElementById("value1Selecter").value
     let enteredValue2 = document.getElementById("value2Selecter").value
 
+    writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
     individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
     drawAllIndividuals();
 
@@ -244,5 +260,3 @@ function addToData(){
 console.log(canvasHeight);
 console.log(adjustWidthOffset(5));
 console.log(adjustHeightOffset(3));
-console.log("kaa",checkIfSamePlace(5,5));
-console.log("s", size)
