@@ -251,22 +251,38 @@ function findTheTopIndividual(x, y){
 const enterButton = document.getElementById("enterButton");
 const samePlaceDiv = document.getElementById("samePlaceDiv");
 const listPlace = document.getElementById("listPlace");
+const isAddedStatus = document.getElementById("isAddedStatus");
+
+let isAdded = localStorage.getItem("isAdded") == true ? true : false;
+
+
 
 enterButton.addEventListener("click", () => {
     addToData();
     samePlaceDiv.style.visibility = "visible"
 });
 
+
+
 function addToData(){
-    let enteredName = document.getElementById("individualsNameInput").value
-    let enteredValue1 = document.getElementById("value1Selecter").value
-    let enteredValue2 = document.getElementById("value2Selecter").value
+    if(isAdded == false){
+        let enteredName = document.getElementById("individualsNameInput").value
+        let enteredValue1 = document.getElementById("value1Selecter").value
+        let enteredValue2 = document.getElementById("value2Selecter").value
 
-    writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
-    individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
-    drawAllIndividuals();
+        writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
+        individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
+        isAdded = true;
+        localStorage.setItem("isAdded", isAdded);
+        drawAllIndividuals();
 
-    console.log("individual writed");
+
+        console.log("individual writed");
+    }
+    else{
+        isAddedStatus.style.visibility = "visible";
+        console.log("You already added");
+    }
 }
 
 
