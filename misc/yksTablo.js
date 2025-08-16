@@ -85,9 +85,9 @@ function drawCanvasThings(){
     ctx.strokeRect(canvas.width/2, canvas.height/2, canvas.width/2, canvas.height/2);
     
 
-    let text1 = "Denemeci Eşşek";
+    let text1 = "Denemeci Yatışçı";
     let text2 = "Çalışkan Denemeci";
-    let text3 = "Eşşek Testçi";
+    let text3 = "Yatışçı Testçi";
     let text4 = "Çalışkan Testçi";
 
     ctx.font = "20px Arial";
@@ -109,7 +109,7 @@ function drawCanvasThings(){
 
     ctx.fillText("Abubububu", canvas.width/2 - 51, 95 * canvas.height/96);*/
 
-    ctx.fillText("Eşşek", 3, canvas.height/2 - 5);
+    ctx.fillText("Yatışçı", 3, canvas.height/2 - 5);
 
     ctx.fillText("Çalışkan", canvas.width - 81, canvas.height/2 - 5);
 
@@ -183,14 +183,14 @@ canvas.addEventListener("mouseleave", function () {
     drawAllIndividuals();
 });
 
-
+let size;
 
 fetch("yksTabloData.json")
     .then(response => response.json())
     .then(data => {
         tableContent = data;
 
-        const size = tableContent.people.length;
+        size = tableContent.people.length;
         
         for(let i = 0; i < size; i++){
             individuals[i] = new individual(
@@ -204,11 +204,26 @@ fetch("yksTabloData.json")
         drawAllIndividuals();
     });
 
+function checkIfSamePlace(x,y){
+    let sameList = [];
+    for(let i = 0; i < size; i++){
+            if(x === individuals[i].value1 && y === individuals[i].value2){
+                console.log("same place found: ", individuals[i].individualsName);
+                sameList.push(individuals[i]);
+                
+            }
+            
+        }
+    if(sameList.length > 0) return sameList;    
+    else return 0;
+}
 
 const enterButton = document.getElementById("enterButton");
+const samePlaceDiv = document.getElementById("samePlaceDiv");
 
 enterButton.addEventListener("click", () => {
     addToData();
+    samePlaceDiv.style.visibility = "visible"
 });
 
 function addToData(){
@@ -225,6 +240,9 @@ function addToData(){
 
 
 
+
 console.log(canvasHeight);
 console.log(adjustWidthOffset(5));
 console.log(adjustHeightOffset(3));
+console.log("kaa",checkIfSamePlace(5,5));
+console.log("s", size)
