@@ -164,7 +164,7 @@ canvas.addEventListener("mousemove", function (e){
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     hoveredIndividual = null;
-    for(let i = 0; i < individuals.length; i++){
+    for(let i = individuals.length - 1; i >= 0; i--){
         const x = adjustWidthOffset(individuals[i].value1);
         const y = adjustHeightOffset(-individuals[i].value2);
         const dx = mouseX - x;
@@ -178,7 +178,7 @@ canvas.addEventListener("mousemove", function (e){
     drawAllIndividuals();
 });
 
-canvas.addEventListener("mouseleave", function () {
+canvas.addEventListener("mouseleave", function (){
     hoveredIndividual = null;
     drawAllIndividuals();
 });
@@ -218,7 +218,8 @@ function checkIfSamePlace(x,y){
         }
             
     }
-    if(sameList.length > 0) return sameList;        
+    console.log("top: ", findTheTopIndividual(x, y));
+    if(sameList.length > 0) return sameList;
     else return 0;
 }
 
@@ -229,6 +230,22 @@ function writeSamePlaceList(list){
         writedRegex += `<li>${list[i].individualsName}</li>`
     }
     listPlace.innerHTML = writedRegex;
+}
+
+function findTheTopIndividual(x, y){
+    for(let i = individuals.length - 1; i >= 0; i--){
+        console.log("searching");
+
+        if(x == individuals[i].value1 && y == individuals[i].value2){
+            console.log("top of the place: ", individuals[i].individualsName);
+            return individuals[i];
+            
+        }
+            
+    }  
+
+    return 0;
+    
 }
 
 const enterButton = document.getElementById("enterButton");
