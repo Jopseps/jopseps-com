@@ -226,8 +226,7 @@ function writeSamePlaceList(list){
     let writedRegex = " ";
     
     for(let i = 0; i < list.length; i++){
-        writedRegex += `<li>${list[i].individualsName}<li>`
-
+        writedRegex += `<li>${list[i].individualsName}</li>`
     }
     listPlace.innerHTML = writedRegex;
 }
