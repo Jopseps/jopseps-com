@@ -253,13 +253,15 @@ const samePlaceDiv = document.getElementById("samePlaceDiv");
 const listPlace = document.getElementById("listPlace");
 const isAddedStatus = document.getElementById("isAddedStatus");
 
-let isAdded = localStorage.getItem("isAdded") == true ? true : false;
+let latestEntry = localStorage.getItem("latestEntry");
+let isAdded = (localStorage.getItem("isAdded") == "true") ? true : false;
 
-
+console.log("isAdded", isAdded)
+console.log("localStorage.getItem(isAdded)", localStorage.getItem("isAdded"))
 
 enterButton.addEventListener("click", () => {
     addToData();
-    samePlaceDiv.style.visibility = "visible"
+    
 });
 
 
@@ -278,9 +280,10 @@ function addToData(){
 
 
         console.log("individual writed");
+        samePlaceDiv.style.visibility = "visible"
     }
     else{
-        isAddedStatus.style.visibility = "visible";
+        isAddedStatus.style.visibility = "visible"; 
         console.log("You already added");
     }
 }
