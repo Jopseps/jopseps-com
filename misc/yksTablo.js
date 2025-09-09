@@ -229,7 +229,7 @@ function writeSamePlaceList(list){
     for(let i = 0; i < list.length; i++){
         writedRegex += `<li>${list[i].individualsName}</li>`
     }
-    listPlace.innerHTML = writedRegex;
+    samePlaceList.innerHTML = writedRegex;
 }
 
 function findTheTopIndividual(x, y){
@@ -250,8 +250,12 @@ function findTheTopIndividual(x, y){
 
 const enterButton = document.getElementById("enterButton");
 const samePlaceDiv = document.getElementById("samePlaceDiv");
-const listPlace = document.getElementById("listPlace");
+const samePlaceP = document.getElementById("samePlaceP");
+const samePlaceList = document.getElementById("samePlaceList");
 const isAddedStatus = document.getElementById("isAddedStatus");
+const inputTop = document.getElementById("inputTop");
+
+let isAddedFeatureActivated = 0;
 
 let latestEntry = localStorage.getItem("latestEntry");
 let isAdded = (localStorage.getItem("isAdded") == "true") ? true : false;
@@ -267,7 +271,7 @@ enterButton.addEventListener("click", () => {
 
 
 function addToData(){
-    if(isAdded == false){
+    if(isAdded == false || isAddedFeatureActivated == false){
         let enteredName = document.getElementById("individualsNameInput").value
         let enteredValue1 = document.getElementById("value1Selecter").value
         let enteredValue2 = document.getElementById("value2Selecter").value
@@ -281,6 +285,12 @@ function addToData(){
 
         console.log("individual writed");
         samePlaceDiv.style.visibility = "visible"
+
+        inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
+
+        console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
+        /*samePlaceP.style.position = "relative";
+        samePlaceList.style.position = "relative";*/
     }
     else{
         isAddedStatus.style.visibility = "visible"; 
