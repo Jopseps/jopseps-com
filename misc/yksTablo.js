@@ -268,11 +268,33 @@ enterButton.addEventListener("click", () => {
     
 });
 
+function checkSameUsername(inputUsername){
+    for(i = 0; i < individuals.length ; i++){
+        if(inputUsername == individuals[i].individualsName){
+            return true;
+        }
+        
+    }
+    return false;
+
+}
+
 
 
 function addToData(){
+    let enteredName = document.getElementById("individualsNameInput").value
+    if(checkSameUsername(enteredName) == true){
+        if(isAdded == false || isAddedFeatureActivated == false){
+            isAddedStatus.innerHTML = "You can't use the same username with another one";
+            isAddedStatus.style.visibility = "visible";
+        }else{
+            isAddedStatus.style.visibility = "hidden";
+        }
+        return false
+    }
+
     if(isAdded == false || isAddedFeatureActivated == false){
-        let enteredName = document.getElementById("individualsNameInput").value
+        isAddedStatus.style.visibility = "hidden"; 
         let enteredValue1 = document.getElementById("value1Selecter").value
         let enteredValue2 = document.getElementById("value2Selecter").value
 
@@ -293,11 +315,17 @@ function addToData(){
         samePlaceList.style.position = "relative";*/
     }
     else{
+        isAddedStatus.innerHTML = "You already entered something earlier";
         isAddedStatus.style.visibility = "visible"; 
         console.log("You already added");
     }
 }
 
+function deleteData(){
+
+
+
+}
 
 
 
