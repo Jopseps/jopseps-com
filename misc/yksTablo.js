@@ -254,7 +254,6 @@ const samePlaceP = document.getElementById("samePlaceP");
 const samePlaceList = document.getElementById("samePlaceList");
 const isAddedStatus = document.getElementById("isAddedStatus");
 const inputTop = document.getElementById("inputTop");
-const bazinga = document.getElementById("bazinga");
 
 let isAddedFeatureActivated = 0;
 
