@@ -349,12 +349,13 @@ async function sendData() {
   document.getElementById("output").textContent = JSON.stringify(result, null, 2);
   console.log(response);
   console.log(result);
+
 }
 
-bazinga.addEventListener("click", function (){
-    console.log("bazingen")
-    sendData()
-});
+function bazinga(){
+    console.log("bazingen");
+    sendData();
+}
 
 
 
