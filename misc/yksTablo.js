@@ -337,27 +337,20 @@ function deleteData(deletedUsername){
     // push to server
 }
 
-async function sendData(){
-    console.log("bazingen");
-    let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev/worker.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: "Labuubuu request!!" })
-    });
-    
-    console.log(response);
-    let result;
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.indexOf("application/json") !== -1) {
-        result = await response.json();
-        console.log(result);
-        console.log(JSON.stringify(result, null, 2));
-    } else {
-        result = await response.text();
-        console.log("Response is not JSON:", result);
-    }
-}
+async function sendData() {
+      try {
+        let response = await fetch("https://senin-worker-adresin.workers.dev", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: "Merhaba server!" })
+        });
 
+        let data = await response.json(); // her zaman JSON dönecek
+        console.log("Server cevabı:", data);
+      } catch (err) {
+        console.error("Hata:", err);
+      }
+    }
 
 
 
