@@ -347,7 +347,10 @@ async function sendData() {
 
   let result = await response.json();
   document.getElementById("output").textContent = JSON.stringify(result, null, 2);
+  console.log(response);
+  console.log(result);
 }
+
 bazinga.addEventListener("click", function (){
     console.log("bazingen")
     sendData()
