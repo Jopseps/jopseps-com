@@ -344,12 +344,16 @@ async function sendData(){
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: "Labuubuu!!" })
   });
-
-  let result = await response;
-  document.getElementById("output").textContent = JSON.stringify(result, null, 2);
   
   console.log(response);
+  let text = await response.text()
+  console.log(text);
+  let result = await response.json();
   console.log(result);
+  
+
+  document.getElementById("output").textContent = JSON.stringify(result, null, 2);
+  
 
 }
 
