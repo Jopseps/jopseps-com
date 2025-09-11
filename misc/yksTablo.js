@@ -339,13 +339,13 @@ function deleteData(deletedUsername){
 
 async function sendData() {
       try {
-        let response = await fetch("https://senin-worker-adresin.workers.dev", {
+        let response = await fetch("https://yusufmertturan.workers.dev", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ text: "Merhaba server!" })
         });
 
-        let data = await response.json(); // her zaman JSON dönecek
+        let data = await response.json();
         console.log("Server cevabı:", data);
       } catch (err) {
         console.error("Hata:", err);
