@@ -189,7 +189,7 @@ fetch("yksTabloData.json")
     .then(response => response.json())
     .then(data => {
         tableContent = data;
-
+        
         size = tableContent.people.length;
         
         for(let i = 0; i < size; i++){
@@ -254,6 +254,7 @@ const samePlaceP = document.getElementById("samePlaceP");
 const samePlaceList = document.getElementById("samePlaceList");
 const isAddedStatus = document.getElementById("isAddedStatus");
 const inputTop = document.getElementById("inputTop");
+const bazinga = document.getElementById("bazinga");
 
 let isAddedFeatureActivated = 0;
 
@@ -280,9 +281,17 @@ function checkSameUsername(inputUsername){
 }
 
 
+function getData(){
+    fetch("yksTabloData.json")
+    .then(response => response.json())
+    .then(data => {
+        return data;
+    });
+    return false;
+}
 
 function addToData(){
-    let enteredName = document.getElementById("individualsNameInput").value
+    let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
             isAddedStatus.innerHTML = "You can't use the same username with another one";
@@ -321,11 +330,28 @@ function addToData(){
     }
 }
 
-function deleteData(){
+function deleteData(deletedUsername){
+    currentData = getData();
 
+    delete currentData(deletedUsername);
 
-
+    // push to server
 }
+
+async function sendData() {
+    let response = await fetch("yks-tablo.yusufmertturan.workers.dev", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text: "Labuubuu!!" })
+  });
+
+  let result = await response.json();
+  document.getElementById("output").textContent = JSON.stringify(result, null, 2);
+}
+bazinga.addEventListener("click", function (){
+    console.log("bazingen")
+    sendData()
+});
 
 
 
