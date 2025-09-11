@@ -346,15 +346,12 @@ async function sendData() {
 
   let result = await response.json();
   document.getElementById("output").textContent = JSON.stringify(result, null, 2);
+  console.log("bazingen");
   console.log(response);
   console.log(result);
 
 }
 
-function bazinga(){
-    console.log("bazingen");
-    sendData();
-}
 
 
 
