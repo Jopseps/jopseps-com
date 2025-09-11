@@ -339,7 +339,7 @@ function deleteData(deletedUsername){
 
 async function sendData(){
     console.log("bazingen");
-    let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+    let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev/worker.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: "Labuubuu request!!" })
