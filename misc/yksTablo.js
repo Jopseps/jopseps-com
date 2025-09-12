@@ -338,14 +338,19 @@ function deleteData(deletedUsername){
 }
 
 async function sendData() {
-  const res = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ mesaj: "selam" })
-  });
+  try {
+    const res = await fetch("https://benimismim.workers.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mesaj: "selam" })
+    });
 
-  const data = await res.json();
-  console.log("Cevap:", data);
+    // eğer JSON değilse burası hata verecek
+    const data = await res.json();
+    console.log("Cevap:", data);
+  } catch (err) {
+    console.error("Fetch hatası:", err);
+  }
 }
 
 
