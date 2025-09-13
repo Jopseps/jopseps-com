@@ -340,14 +340,14 @@ function deleteData(deletedUsername){
 
 async function getData(){
     const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
-        method: "POST",
+        method: "GET",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ canIgetUhhh: "Some json files" })
     })
 
     let data;
 
-    const contentType = response.headers.get("Content-Type");
+    // const contentType = response.headers.get("Content-Type");
 
     data = await response.json();
 
