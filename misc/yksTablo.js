@@ -341,11 +341,11 @@ async function sendData() {
   const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ test: "selam" })
+    body: JSON.stringify({ test: "bazingen" })
   });
 
   const data = await response.json();
-  console.log("Worker cevabı:", data);
+  console.log("Worker answer:", data);
 }
 
 
