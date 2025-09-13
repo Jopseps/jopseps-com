@@ -338,12 +338,15 @@ function deleteData(deletedUsername){
 }
 
 async function sendData() {
-  const url = "https://yks-tablo.yusufmertturan.workers.dev"; 
-        const res = await fetch(url);
-        const text = await res.text();
-        console.log("Server replied:", text);
-}
+  const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ test: "selam" })
+  });
 
+  const data = await response.json();
+  console.log("Worker cevabı:", data);
+}
 
 
 console.log(canvasHeight);
