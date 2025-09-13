@@ -337,7 +337,27 @@ function deleteData(deletedUsername){
     // push to server
 }
 
-async function sendData() {
+
+async function getData(){
+    const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ canIgetUhhh: "Some json files" })
+    })
+
+    let data;
+
+    const contentType = response.headers.get("Content-Type");
+
+    data = await response.json();
+
+    console.log(JSON.stringify(data));
+
+
+}
+
+
+/*async function sendData() {
   const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -352,7 +372,7 @@ async function sendData() {
     data = await response.text();
   }
   console.log("Worker answer:", data);
-}
+}*/
 
 
 console.log(canvasHeight);
