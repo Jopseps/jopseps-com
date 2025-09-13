@@ -344,7 +344,13 @@ async function sendData() {
     body: JSON.stringify({ test: "bazingen" })
   });
 
-  const data = await response.json();
+  let data;
+  const contentType = response.headers.get("content-type");
+  if (contentType && contentType.indexOf("application/json") !== -1) {
+    data = await response.json();
+  } else {
+    data = await response.text();
+  }
   console.log("Worker answer:", data);
 }
 
