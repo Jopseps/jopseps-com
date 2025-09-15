@@ -289,6 +289,66 @@ function getData(){
     return false;
 }
 
+// Individuals vector to json
+function objectToJson(){
+    let currentText = "{people: [";
+    for(let i = 0; i < individuals.length; i++){
+        currentText += '"individualsName": ' + '"' + individuals[i].individualsName + 
+        '", "value1": ' +  individuals[i].value1 + ', "value2": ' +  individuals[i].value2 + 
+        ', "color": ' +  individuals[i].color + "}";
+        if(!(i == individuals.length - 1)) currentText += ",";
+
+
+    }
+    currentText += "]}";
+    console.log(currentText);
+    console.log(individuals.stringify());
+    return currentText;
+}
+
+
+function addToServerData(){
+    let enteredName = document.getElementById("individualsNameInput").value;
+    if(checkSameUsername(enteredName) == true){
+        if(isAdded == false || isAddedFeatureActivated == false){
+            isAddedStatus.innerHTML = "You can't use the same username with another one";
+            isAddedStatus.style.visibility = "visible";
+        }else{
+            isAddedStatus.style.visibility = "hidden";
+        }
+        return false
+    }
+
+    if(isAdded == false || isAddedFeatureActivated == false){
+        isAddedStatus.style.visibility = "hidden"; 
+        let enteredValue1 = document.getElementById("value1Selecter").value
+        let enteredValue2 = document.getElementById("value2Selecter").value
+
+        writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
+        individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
+        isAdded = true;
+        localStorage.setItem("isAdded", isAdded);
+        drawAllIndividuals();
+
+
+        console.log("individual writed");
+        samePlaceDiv.style.visibility = "visible"
+
+        inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
+
+        console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
+        /*samePlaceP.style.position = "relative";
+        samePlaceList.style.position = "relative";*/
+    }
+    else{
+        isAddedStatus.innerHTML = "You already entered something earlier";
+        isAddedStatus.style.visibility = "visible"; 
+        console.log("You already added");
+    }
+
+
+}
+
 function addToData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
@@ -378,3 +438,5 @@ async function getData(){
 console.log(canvasHeight);
 console.log(adjustWidthOffset(5));
 console.log(adjustHeightOffset(3));
+console.log(individuals.length)
+objectToJson(individuals)
