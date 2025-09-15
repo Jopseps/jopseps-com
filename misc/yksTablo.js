@@ -188,7 +188,7 @@ let size;
 
 function init(){
     tableContent = getServerData();
-
+    console.log("tableContent:", tableContent);
     size = tableContent.people.length;
         
         for(let i = 0; i < size; i++){
@@ -469,4 +469,3 @@ console.log(adjustHeightOffset(3));
 console.log(individuals.length)
 // objectToJson(individuals) // Remove or comment out this call hereength)
 objectToJson(individuals)
-addToServerData();
