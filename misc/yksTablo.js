@@ -186,7 +186,26 @@ canvas.addEventListener("mouseleave", function (){
 
 let size;
 
-fetch("yksTabloData.json")
+function init(){
+    tableContent = getServerData();
+
+    size = tableContent.people.length;
+        
+        for(let i = 0; i < size; i++){
+            individuals[i] = new individual(
+                tableContent.people[i].individualsName,
+                tableContent.people[i].value1,
+                tableContent.people[i].value2,
+                tableContent.people[i].color);
+                
+            console.log(individuals[i].individualsName);
+        }
+        console.log(size);
+        drawAllIndividuals();
+        objectToJson(individuals); // Call here after individuals is populated
+}
+
+/*fetch("yksTabloData.json")
     .then(response => response.json())
     .then(data => {
         tableContent = data;
@@ -206,7 +225,7 @@ fetch("yksTabloData.json")
         drawAllIndividuals();
         objectToJson(individuals); // Call here after individuals is populated
     });
-
+*/
 function checkIfSamePlace(x,y){
     let sameList = [];
     console.log("individuals.length", individuals.length)
@@ -441,6 +460,8 @@ async function getServerData(){
   }
   console.log("Worker answer:", data);
 }*/
+
+init()
 
 console.log(canvasHeight);
 console.log(adjustWidthOffset(5));
