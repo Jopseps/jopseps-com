@@ -2,6 +2,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 
+let tempServerThingy;
 
 
 const padding = 40
@@ -203,13 +204,14 @@ fetch("yksTabloData.json")
         }
         console.log(size);
         drawAllIndividuals();
+        objectToJson(individuals); // Call here after individuals is populated
     });
 
 function checkIfSamePlace(x,y){
     let sameList = [];
     console.log("individuals.length", individuals.length)
     for(let i = 0; i < individuals.length; i++){
-        console.log("searching");
+        console.log("searching in",individuals[i].value1, ", ", individuals[i].value2);
 
         if(x == individuals[i].value1 && y == individuals[i].value2){
             console.log("same place found: ", individuals[i].individualsName);
@@ -249,6 +251,7 @@ function findTheTopIndividual(x, y){
 }
 
 const enterButton = document.getElementById("enterButton");
+const debugEnterButton = document.getElementById("debugEnterButton");
 const samePlaceDiv = document.getElementById("samePlaceDiv");
 const samePlaceP = document.getElementById("samePlaceP");
 const samePlaceList = document.getElementById("samePlaceList");
@@ -267,6 +270,12 @@ enterButton.addEventListener("click", () => {
     addToData();
     
 });
+
+debugEnterButton.addEventListener("click", () => {
+    addToServerData();
+    
+});
+
 
 function checkSameUsername(inputUsername){
     for(i = 0; i < individuals.length ; i++){
@@ -293,16 +302,15 @@ function getData(){
 function objectToJson(){
     let currentText = "{people: [";
     for(let i = 0; i < individuals.length; i++){
-        currentText += '"individualsName": ' + '"' + individuals[i].individualsName + 
+        currentText += '{"individualsName": ' + '"' + individuals[i].individualsName + 
         '", "value1": ' +  individuals[i].value1 + ', "value2": ' +  individuals[i].value2 + 
-        ', "color": ' +  individuals[i].color + "}";
+        ', "color": "' +  individuals[i].color + '"}';
         if(!(i == individuals.length - 1)) currentText += ",";
 
 
     }
     currentText += "]}";
     console.log(currentText);
-    console.log(individuals.stringify());
     return currentText;
 }
 
@@ -329,6 +337,8 @@ function addToServerData(){
         isAdded = true;
         localStorage.setItem("isAdded", isAdded);
         drawAllIndividuals();
+        tempServerThingy = objectToJson(individuals);
+        console.log(tempServerThingy);
 
 
         console.log("individual writed");
@@ -434,9 +444,10 @@ async function getData(){
   console.log("Worker answer:", data);
 }*/
 
-
 console.log(canvasHeight);
 console.log(adjustWidthOffset(5));
 console.log(adjustHeightOffset(3));
 console.log(individuals.length)
+// objectToJson(individuals) // Remove or comment out this call hereength)
 objectToJson(individuals)
+addToServerData();
