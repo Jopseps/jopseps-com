@@ -333,8 +333,8 @@ function objectToJson(){
     return currentText;
 }
 
-
-function addToServerData(){
+// change sh
+async function addToServerData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
@@ -348,16 +348,25 @@ function addToServerData(){
 
     if(isAdded == false || isAddedFeatureActivated == false){
         isAddedStatus.style.visibility = "hidden"; 
-        let enteredValue1 = document.getElementById("value1Selecter").value
+        let enteredValue1 = document.getElementById("value1Selecter").value 
         let enteredValue2 = document.getElementById("value2Selecter").value
 
         writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
+        
         individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
         isAdded = true;
         localStorage.setItem("isAdded", isAdded);
+        
         drawAllIndividuals();
         tempServerThingy = objectToJson(individuals);
         console.log(tempServerThingy);
+
+        let response = await fetch("yks-tablo.yusufmertturan.workers.dev",{
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(tempServerThingy)
+
+        })
 
 
         console.log("individual writed");
