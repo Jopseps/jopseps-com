@@ -77,7 +77,7 @@ function deleteData(deletedUsername){
 
 
 async function getServerData(){
-    const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+    let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ canIgetUhhh: "Some json files" })
@@ -86,7 +86,7 @@ async function getServerData(){
     let data = await response.json();
 
     console.log(JSON.stringify(data));
-    console.log(data);
+    console.log("data: ", data);
     return data;
 
 
