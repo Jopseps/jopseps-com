@@ -1,6 +1,3 @@
-import * as compass from "./yksTabloCompass.js"
-import * as server from "./yksTabloServer.js";
-
 
 let tempServerThingy;
 
@@ -117,9 +114,6 @@ function objectToJson(){
 
 init()
 
-console.log(canvasHeight);
-console.log(adjustWidthOffset(5));
-console.log(adjustHeightOffset(3));
 console.log(individuals.length)
 // objectToJson(individuals) // Remove or comment out this call hereength)
 objectToJson(individuals)
