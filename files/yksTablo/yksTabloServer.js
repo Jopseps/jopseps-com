@@ -91,5 +91,3 @@ async function getServerData(){
 
 
 }
-
-let aaaaaaa = 1;

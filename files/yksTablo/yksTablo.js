@@ -23,10 +23,6 @@ let tableContent;
 
 
 
-
-if(server.aaaaaa == 1){}
-
-
 let size;
 
 function init(){
