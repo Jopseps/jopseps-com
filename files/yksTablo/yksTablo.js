@@ -25,10 +25,13 @@ let tableContent;
 
 let size;
 
-function init(){
-    tableContent = getServerData();
+function init(){ 
+    jsonData = getData();
+    tableContent = JSON.parse(jsonData);
     console.log("tableContent:", tableContent);
     size = tableContent.people.length;
+    console.log(tableContent);  
+    console.log(size)
         
         for(let i = 0; i < size; i++){
             individuals[i] = new individual(
@@ -79,13 +82,15 @@ function checkSameUsername(inputUsername){
 
 }
 
-
+// Local testing
 function getData(){
-    fetch("yksTabloData.json")
+    fetch("../files/yksTablo/yksTabloData.json")
     .then(response => response.json())
     .then(data => {
+        console.log("DEBUG | getData() returned ", data);
         return data;
     });
+    console.log("DEBUG | getData() returned 0")
     return false;
 }
 
@@ -105,6 +110,16 @@ function objectToJson(){
     return currentText;
 }
 
+function jsonToObjects(json){
+    let hugeData = json.json();
+    console.log("hugeData.people.length=", hugeData.people.length);
+    for(let i = 0; i < hugeData.people.length; i++){
+        
+
+
+    }
+
+}
 
 
 
