@@ -49,13 +49,13 @@ async function addToServerData(){
 
 }
 
-function deleteData(deletedUsername){
+/*function deleteData(deletedUsername){
     currentData = getData();
 
     delete currentData(deletedUsername);
 
     // push to server
-}
+}*/
 
 
 /*async function sendData() {

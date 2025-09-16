@@ -25,25 +25,28 @@ let tableContent;
 
 let size;
 
-function init(){ 
-    jsonData = getData();
-    tableContent = JSON.parse(jsonData);
+async function init(){ 
+    console.log("init");
+    obj = await getData();
+    // json.people = people:[. . .]
+    tableContent = obj.people
     console.log("tableContent:", tableContent);
-    size = tableContent.people.length;
+    size = tableContent.length;
+    console.log(tableContent.length)
     console.log(tableContent);  
     console.log(size)
         
         for(let i = 0; i < size; i++){
             individuals[i] = new individual(
-                tableContent.people[i].individualsName,
-                tableContent.people[i].value1,
-                tableContent.people[i].value2,
-                tableContent.people[i].color);
+                tableContent[i].individualsName,
+                tableContent[i].value1,
+                tableContent[i].value2,
+                tableContent[i].color);
                 
             console.log(individuals[i].individualsName);
         }
         console.log(size);
-        compass.drawAllIndividuals();
+        drawAllIndividuals();
         objectToJson(individuals); // Call here after individuals is populated
 }
 
@@ -83,15 +86,16 @@ function checkSameUsername(inputUsername){
 }
 
 // Local testing
-function getData(){
-    fetch("../files/yksTablo/yksTabloData.json")
-    .then(response => response.json())
-    .then(data => {
+async function getData(){
+    try {
+        const response = await fetch("../files/yksTablo/yksTabloData.json");
+        const data = await response.json();
         console.log("DEBUG | getData() returned ", data);
         return data;
-    });
-    console.log("DEBUG | getData() returned 0")
-    return false;
+    } catch (error) {
+        console.log("DEBUG | getData() returned 0", error);
+        return false;
+    }
 }
 
 // Individuals vector to json
