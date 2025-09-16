@@ -1,3 +1,6 @@
+import * as server from "./yksTabloServer.js";
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -333,8 +336,14 @@ function objectToJson(){
     return currentText;
 }
 
-// change sh
 async function addToServerData(){
+    let realTimeData = await getData()
+
+
+}
+
+// change sh
+/*async function addToServerData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
@@ -375,8 +384,6 @@ async function addToServerData(){
         inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
 
         console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
-        /*samePlaceP.style.position = "relative";
-        samePlaceList.style.position = "relative";*/
     }
     else{
         isAddedStatus.innerHTML = "You already entered something earlier";
@@ -385,8 +392,7 @@ async function addToServerData(){
     }
 
 
-}
-
+}*/
 function addToData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
@@ -469,6 +475,7 @@ async function getServerData(){
   }
   console.log("Worker answer:", data);
 }*/
+
 
 init()
 
