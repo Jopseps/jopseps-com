@@ -15,23 +15,26 @@ async function addToServerData(){
         let enteredValue1 = document.getElementById("value1Selecter").value 
         let enteredValue2 = document.getElementById("value2Selecter").value
 
-        writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
-        
-        individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
-        isAdded = true;
-        localStorage.setItem("isAdded", isAdded);
-        
-        drawAllIndividuals();
-        tempServerThingy = objectToJson(individuals);
-        console.log(tempServerThingy);
+        let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, "green");
 
+        // asking server to put and will
         let response = await fetch("yks-tablo.yusufmertturan.workers.dev",{
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(tempServerThingy)
+            body: JSON.stringify(pushingIndividual)
 
         })
+        
+        if(!response){
+            console.log("something went wrong while adding to server data");
+        }
 
+        writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
+        
+        // pull from server after adding and check
+        individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
+        isAdded = true;
+        localStorage.setItem("isAdded", isAdded);
 
         console.log("individual writed");
         samePlaceDiv.style.visibility = "visible"
@@ -39,6 +42,8 @@ async function addToServerData(){
         inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
 
         console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
+
+        init();
     }
     else{
         isAddedStatus.innerHTML = "You already entered something earlier";
@@ -77,17 +82,22 @@ async function addToServerData(){
 
 
 async function getServerData(){
-    let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+    try {
+        let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ canIgetUhhh: "Some json files" })
-    })
+    });
 
-    let data = await response.json();
+        const data = await response.json();
+        console.log("DEBUG | getServerData() returned ", data);
+        console.log(JSON.stringify(data));
+        console.log("data: ", data);
+        return data;
 
-    console.log(JSON.stringify(data));
-    console.log("data: ", data);
-    return data;
-
+    } catch (error) {
+        console.log("DEBUG | getServerData() returned 0", error);
+        return false;
+    }
 
 }

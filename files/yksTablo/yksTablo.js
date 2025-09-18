@@ -21,14 +21,12 @@ let individuals = [];
 
 let tableContent;
 
-
-
 let size;
 
 async function init(){ 
     console.log("init");
-    obj = await getData();
-    // json.people = people:[. . .]
+    obj = await getServerData();
+    // obj.people = people:[. . .] array
     tableContent = obj.people
     console.log("tableContent:", tableContent);
     size = tableContent.length;
@@ -47,7 +45,7 @@ async function init(){
         }
         console.log(size);
         drawAllIndividuals();
-        objectToJson(individuals); // Call here after individuals is populated
+        // objectToJson(individuals);
 }
 
 
@@ -132,3 +130,5 @@ init()
 console.log(individuals.length)
 // objectToJson(individuals) // Remove or comment out this call hereength)
 objectToJson(individuals)
+console.log(JSON.stringify(new individual("hasan", 3, 4, "red")))
+
