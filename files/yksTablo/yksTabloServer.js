@@ -18,14 +18,13 @@ async function addToServerData(){
         let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, "green");
 
         // asking server to put and will
-        let response = await fetch("yks-tablo.yusufmertturan.workers.dev",{
+        let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(pushingIndividual)
-
-        })
+        });
         
-        if(!response){
+        if (!response.ok) {
             console.log("something went wrong while adding to server data");
         }
 
