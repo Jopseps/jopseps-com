@@ -27,9 +27,9 @@ async function init(){
     console.log("init");
     obj = await getServerData();
     // obj.people = people:[. . .] array
-    tableContent = obj.people
+    tableContent = await obj.people
     console.log("tableContent:", tableContent);
-    size = tableContent.length;
+    size = await tableContent.length;
     console.log(tableContent.length)
     console.log(tableContent);  
     console.log(size)
