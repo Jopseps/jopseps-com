@@ -92,7 +92,7 @@ async function getServerData(){
         console.log("DEBUG | getServerData() returned ", data);
         console.log(JSON.stringify(data));
         console.log("data: ", data);
-        return data;
+        return await data;
 
     } catch (error) {
         console.log("DEBUG | getServerData() returned 0", error);
