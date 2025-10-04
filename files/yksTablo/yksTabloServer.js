@@ -86,7 +86,7 @@ async function getServerData(){
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ canIgetUhhh: "Some json files" })
-    });
+    }); 
 
         const data = await response.json();
         console.log("DEBUG | getServerData() returned ", data);
