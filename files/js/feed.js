@@ -102,8 +102,9 @@ function pasteIntoHTML(realStuffRegex, featuredRegex){
 }
 
 async function setUpThings(){
-    let realStuffFeed = await (await getFeedFromServer("realStuff")).json()
-    let featuredFeed = await (await getFeedFromServer("featured")).json()
+    // preview is for the home page
+    let realStuffFeed = await (await getFeedFromServer("realStuffPreview")).json()
+    let featuredFeed = await (await getFeedFromServer("featuredPreview")).json()
     console.log("c", realStuffFeed)
     console.log("c", featuredFeed)
     pasteIntoHTML(multipleTurnIntoRegexes(jsonToObjects(realStuffFeed)), multipleTurnIntoRegexes(jsonToObjects(featuredFeed)))
@@ -113,6 +114,7 @@ async function setUpThings(){
 setUpThings()
 
 function jsonToObjects(json){
+    try{
     console.log(json)
     console.log(JSON.stringify(JSON.parse(json)))
     // turn the json into objects
@@ -125,4 +127,17 @@ function jsonToObjects(json){
     }
 
     return objectArray;
+    }
+    catch(error){
+        console.log(error)
+        // its already an object
+        return json
+
+    }
+}
+
+// well it will work a little bit weird
+function objectsToObjects(objectArray){
+    
+
 }
