@@ -1,3 +1,17 @@
+class feedCard{
+    title;
+    description;
+    image;
+    link;
+
+    constructor(t,d,i,l){
+        this.title = t;
+        this.description = d;
+        this.image = i;
+        this.link = l;
+    }
+}
+
 // Raw feed Element into html regex
 
 let projectWrapperClassName = "project-wrapper"
@@ -23,11 +37,37 @@ function TurnIntoRegex(feedElement){
             </div>
         </a>
     </div>`
+    console.log("TurnIntoRegex output: ", regex)
     return regex;
 }
 
 function multipleTurnIntoRegexes(rawFeedData){
+    let regex = ""
+    for(let i = 0; i < rawFeedData.length; i++){
+        let projectTitle = rawFeedData[i].title;
+        let projectImage = rawFeedData[i].image;
+        let projectDescription = rawFeedData[i].description;
+        let projectLink = rawFeedData[i].link
 
+
+        regex += 
+        `<div class="${projectWrapperClassName}">
+            <a href="${projectLink}">
+                <div class="${projectCardClassName}">
+                    
+                    <img src="${projectImage}" alt="Project Image">
+                    <div class="${projectInfoClassName}">
+                        <h3>${projectTitle}</h3>
+                        <p>${projectDescription}</p>
+                    </div>
+                </div>
+            </a>
+        </div>`
+
+    }
+    
+    console.log("TurnIntoRegex output: ", regex)
+    return regex;
 
 }
 
@@ -62,12 +102,27 @@ function pasteIntoHTML(realStuffRegex, featuredRegex){
 }
 
 async function setUpThings(){
-    let realStuffFeed = await getFeedFromServer("realStuff")
-    let featuredFeed = await getFeedFromServer("featured")
+    let realStuffFeed = await (await getFeedFromServer("realStuff")).json()
+    let featuredFeed = await (await getFeedFromServer("featured")).json()
     console.log("c", realStuffFeed)
     console.log("c", featuredFeed)
-    pasteIntoHTML(TurnIntoRegex(realStuffFeed), TurnIntoRegex(featuredFeed))
+    pasteIntoHTML(multipleTurnIntoRegexes(jsonToObjects(realStuffFeed)), multipleTurnIntoRegexes(jsonToObjects(featuredFeed)))
 
 
 }
 setUpThings()
+
+function jsonToObjects(json){
+    console.log(json)
+    console.log(JSON.stringify(JSON.parse(json)))
+    // turn the json into objects
+    let hugeData = JSON.parse(json);
+    console.log(hugeData[0])
+    let objectArray = []
+    console.log("hugeData.length=", hugeData.length);
+    for(let i = 0; i < hugeData.length; i++){
+        objectArray[i] = new feedCard(hugeData[i].title, hugeData[i].description, hugeData[i].image, hugeData[i].link);
+    }
+
+    return objectArray;
+}
