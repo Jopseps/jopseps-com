@@ -85,7 +85,6 @@ async function getFeedFromServer(feedType){
     return feedData;
 
 }
-    
 
 
 const realStuffGrid = document.getElementById("realStuffGrid");
@@ -134,10 +133,4 @@ function jsonToObjects(json){
         return json
 
     }
-}
-
-// well it will work a little bit weird
-function objectsToObjects(objectArray){
-    
-
 }
