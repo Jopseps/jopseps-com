@@ -13,7 +13,6 @@ class feedCard{
 }
 
 // Raw feed Element into html regex
-
 let projectWrapperClassName = "project-wrapper"
 let projectCardClassName = "project-card"
 let projectInfoClassName = "project-info"
