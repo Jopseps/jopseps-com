@@ -85,7 +85,7 @@ async function getFeedFromServer(feedType){
     return feedData;
 
 }
-
+    
 
 
 const realStuffGrid = document.getElementById("realStuffGrid");
