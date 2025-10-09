@@ -72,7 +72,7 @@ function multipleTurnIntoRegexes(rawFeedData){
 }
 
 async function getFeedFromServer(feedType){
-    let feedData = await fetch("jopseps-com-feed.yusufmertturan.workers.dev",{
+    let feedData = await fetch("https://jopseps-com-feed.yusufmertturan.workers.dev",{
         method: "POST", 
         headers: { "Content-Type": "application/json" },
         body: feedType
