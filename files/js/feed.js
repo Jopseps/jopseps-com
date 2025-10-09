@@ -130,6 +130,5 @@ function jsonToObjects(json){
         console.log(error)
         // its already an object
         return json
-
     }
 }
