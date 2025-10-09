@@ -105,7 +105,7 @@ async function setUpThings(){
     let featuredFeed = await (await getFeedFromServer("featuredPreview")).json()
     console.log("c", realStuffFeed)
     console.log("c", featuredFeed)
-    pasteIntoHTML(multipleTurnIntoRegexes(jsonToObjects(realStuffFeed)), multipleTurnIntoRegexes(jsonToObjects(featuredFeed)))
+    pasteIntoHTML(multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(realStuffFeed))), multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(featuredFeed))))
 
 
 }
@@ -131,4 +131,13 @@ function jsonToObjects(json){
         // its already an object
         return json
     }
+}
+
+// reverses the array objects order
+function reverseTheOrder(object){
+    let reversedObject = [];
+    for(let i = 0; i < object.length; i++){
+        reversedObject[i] = object[object.length - 1 - i];
+    }
+    return reversedObject;
 }
