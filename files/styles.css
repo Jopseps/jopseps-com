@@ -134,7 +134,7 @@
         }
         
         .project-card{
-            max-width: 400px;
+            width: 400px;
             background-color: rgb(255, 255, 255);
             border: 2px solid rgb(204, 204, 204);
             border-radius: 12px;
@@ -172,7 +172,7 @@
         }
 
         .project-card-P{
-            max-width: 400px;
+            width: 400px;
             background-color: rgb(255, 255, 255);
             border: 2px solid rgb(204, 204, 204);
             border-radius: 12px;
