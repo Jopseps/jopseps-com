@@ -93,7 +93,7 @@ function drawCanvasThings(){
     ctx.fillText(text1, 1*canvas.width/8 - text1.length * 1.65, 1*canvas.height/4);
     
     ctx.fillStyle = "rgba(73, 111, 212, 1)";
-    ctx.fillText(text2, 5*canvas.width/8 - text2.length * 1.8, 1*canvas.height/4);
+    ctx.fillText(text2, 5*canvas.width/8 - text2.length * 2, 1*canvas.height/4);
 
     ctx.fillStyle = "rgba(68, 161, 59, 1)";
     ctx.fillText(text3, 1*canvas.width/8 - text3.length * 0.7, 3*canvas.height/4);
