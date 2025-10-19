@@ -1,4 +1,4 @@
-let isTesting = true;
+let isTesting = false;
 let serverLink;
 
 if(isTesting == true) function a(){
