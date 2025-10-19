@@ -58,7 +58,7 @@ console.log("isAdded", isAdded)
 console.log("localStorage.getItem(isAdded)", localStorage.getItem("isAdded"))
 
 enterButton.addEventListener("click", () => {
-    addToData();
+    addToServerData();
 });
 
 /*debugEnterButton.addEventListener("click", () => {
