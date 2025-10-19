@@ -1,3 +1,5 @@
+let serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
+
 async function addToServerData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
@@ -14,11 +16,13 @@ async function addToServerData(){
         isAddedStatus.style.visibility = "hidden"; 
         let enteredValue1 = document.getElementById("value1Selecter").value 
         let enteredValue2 = document.getElementById("value2Selecter").value
+        let enteredColor = document.getElementById("colorSelecter").value
+        console.log("enteredColor: ", enteredColor);
 
-        let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, "green");
+        let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, enteredColor);
 
         // asking server to put and will
-        let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+        let response = await fetch(serverLink, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(pushingIndividual)
@@ -62,27 +66,14 @@ async function addToServerData(){
 }*/
 
 
-/*async function sendData() {
-  const response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ test: "bazingen" })
-  });
-
-  let data;
-  const contentType = response.headers.get("content-type");
-  if (contentType && contentType.indexOf("application/json") !== -1) {
-    data = await response.json();
-  } else {
-    data = await response.text();
-  }
-  console.log("Worker answer:", data);
-}*/
+function debug() {
+    
+}
 
 
 async function getServerData(){
     try {
-        let response = await fetch("https://yks-tablo.yusufmertturan.workers.dev", {
+        let response = await fetch(serverLink, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ canIgetUhhh: "Some json files" })

@@ -1,7 +1,3 @@
-
-let tempServerThingy;
-
-
 const padding = 40
 
 class individual{
