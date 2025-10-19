@@ -1,12 +1,4 @@
-let isTesting = false;
-let serverLink;
-
-if(isTesting == true) function a(){
-    serverLink = "http://127.0.0.1:8787";
-}
-else function e(){
-    serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
-}
+let serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
 
 
 async function addToServerData(){
