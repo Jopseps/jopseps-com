@@ -46,7 +46,7 @@ async function init(){
 
 
 const enterButton = document.getElementById("enterButton");
-//const debugEnterButton = document.getElementById("debugEnterButton");
+// const debugEnterButton = document.getElementById("debugEnterButton");
 
 
 let isAddedFeatureActivated = 0;
