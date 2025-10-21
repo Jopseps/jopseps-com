@@ -1,4 +1,4 @@
-let serverLink = "http://127.0.0.1:8787";
+let serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
 
 
 async function addToServerData(){
