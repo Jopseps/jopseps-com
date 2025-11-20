@@ -106,7 +106,7 @@ async function setUpThings(){
     // preview is for the home page
     let realStuffFeed = await (await getFeedFromServer("realStuffPreview")).json()
     let featuredFeed = await (await getFeedFromServer("featuredPreview")).json()
-    let contentFeed = await (await getFeedFromServer("content")).json()
+    let contentFeed = await (await getFeedFromServer("contentPreview")).json()
     console.log("c", realStuffFeed)
     console.log("c", featuredFeed)
     console.log("c", contentFeed)
