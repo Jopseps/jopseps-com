@@ -88,13 +88,16 @@ async function getFeedFromServer(feedType){
 
 const realStuffGrid = document.getElementById("realStuffGrid");
 const featuredGrid = document.getElementById("featuredGrid");
+const contentGrid = document.getElementById("contentGrid");
 
 function pasteIntoHTML(realStuffRegex, featuredRegex, contentRegex){
     realStuffGrid.innerHTML = realStuffRegex;
     featuredGrid.innerHTML = featuredRegex;
+    contentGrid.innerHTML = contentRegex;
 
     console.log("a", realStuffRegex);
     console.log("a", featuredRegex);
+    console.log("a", contentRegex);
     
     console.log("pasted into HTML")
 }
