@@ -89,7 +89,7 @@ async function getFeedFromServer(feedType){
 const realStuffGrid = document.getElementById("realStuffGrid");
 const featuredGrid = document.getElementById("featuredGrid");
 
-function pasteIntoHTML(realStuffRegex, featuredRegex){
+function pasteIntoHTML(realStuffRegex, featuredRegex, contentRegex){
     realStuffGrid.innerHTML = realStuffRegex;
     featuredGrid.innerHTML = featuredRegex;
 
@@ -103,10 +103,15 @@ async function setUpThings(){
     // preview is for the home page
     let realStuffFeed = await (await getFeedFromServer("realStuffPreview")).json()
     let featuredFeed = await (await getFeedFromServer("featuredPreview")).json()
+    let contentFeed = await (await getFeedFromServer("content")).json()
     console.log("c", realStuffFeed)
     console.log("c", featuredFeed)
-    pasteIntoHTML(multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(realStuffFeed))), multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(featuredFeed))))
-
+    console.log("c", contentFeed)
+    pasteIntoHTML(
+        multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(realStuffFeed))),
+        multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(featuredFeed))),
+        multipleTurnIntoRegexes(reverseTheOrder(jsonToObjects(contentFeed)))
+    );
 
 }
 setUpThings()
