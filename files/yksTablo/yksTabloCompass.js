@@ -101,7 +101,10 @@ function drawCanvasThings(){
     ctx.fillStyle = "rgba(100, 70, 184, 1)";
     ctx.fillText(text4, 5*canvas.width/8 - text4.length * 1.35, 3*canvas.height/4);
 
-    ctx.fillStyle = "rgba(0, 0, 0, 1)";
+    
+    let isDark = typeof colorScheme !== 'undefined' && colorScheme === "dark";
+    ctx.fillStyle = isDark ?  "rgba(255, 255, 255, 1)" : "rgba(0, 0, 0, 1)";
+    
     /*ctx.fillText("Abubububu", canvas.width/2 - 51, canvas.height/24);
 
     ctx.fillText("Abubububu", canvas.width/2 - 51, 95 * canvas.height/96);*/
@@ -237,4 +240,24 @@ function addToData(){
         isAddedStatus.style.visibility = "visible"; 
         console.log("You already added");
     }
+}
+
+window.addEventListener('load', () => {
+    canvasWidth = parseInt(getComputedStyle(canvas).width);
+    canvasHeight = parseInt(getComputedStyle(canvas).height);
+    drawAllIndividuals();
+});
+
+window.addEventListener("resize", () => {
+    canvasWidth = parseInt(getComputedStyle(canvas).width);
+    canvasHeight = parseInt(getComputedStyle(canvas).height);
+    drawAllIndividuals();
+});
+
+const darkModeButton = document.getElementById("darkModeButton"); 
+
+if(darkModeButton){
+    darkModeButton.addEventListener("click", () => {
+        setTimeout(drawAllIndividuals, 10);
+    });
 }

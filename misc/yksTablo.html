@@ -3,18 +3,21 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <body style="background-color: rgb(187, 187, 187);">
+        <body style="background-color: rgb(187, 187, 187);" class="background">
 
         <link rel="stylesheet" href="../files/styles.css">
 
         <title>Jopseps - YKS Tablosu</title>
         <link rel="icon" type="image/x-icon" href="https://github.com/Jopseps/jopseps-com/blob/main/files/realtemmu.png?raw=true">
-
+        
     </head>
 
     <div class="site-wrapper">
         <main class="site-content">
 
+            <div class="container-right">
+                <button id="darkModeButton" onclick="switchColorScheme(); cacheBackground()">dark mode</button>
+            </div>
   
             <h1 style="text-align: center; font-size: 300%; padding-top: 1%;">YKS Tablosu</h1>
             
@@ -26,7 +29,7 @@
                 <body>
                     
                     <p class="prevent-select" style="text-align: center; font-family: Arial; font-size: 125%; font: bold;">Denemeci</p>
-                    <canvas id="canvas" tabindex="0" width="400px" height="400px"></canvas>
+                    <canvas id="canvas" tabindex="0" width="400px" height="400px" autofocus></canvas>
                     <p class="prevent-select" style="text-align: center; font-family: Arial; font-size: 125%; font: bold;">Testçi</p>
 
                     <div style="position: relative; align-items: center; margin-top: 0.4; visibility: hidden;" id="samePlaceDiv">
@@ -116,7 +119,7 @@
                 <p id="isAddedStatus" style="visibility: hidden;">You already entered something earlier</p>
             </div>
             
-            <p style="padding-top: min(30px, 5%);" class="straightText container">Enter tuşuna basarak&nbsp;<a href="gizlilik.html" style="text-decoration:underline; color: #0000FF;">
+            <p style="margin-top: min(30px, 5%); margin-bottom: min(10px, 1%)" class="straightText container">Enter tuşuna basarak&nbsp;<a href="gizlilik.html" style="text-decoration:underline; color: #0000FF;">
                 Gizlilik Politikamızı </a>&nbsp;okuduğunuzu ve kabul ettiğinizi onaylarsınız.</p>
             <div  class="container">
                 <button style="padding: 12px; padding-right: max(25px, 1.5%); padding-left: max(25px, 1.5%); margin-bottom: max(40px, 3%);" id="enterButton">Enter</button>
@@ -126,30 +129,31 @@
         </main>
     </div>
 
-
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>About Me</h4>
-                <p>Yusuf Mert</p>
-                </div>
-                    <div class="footer-section">
-                        <h4>Contact</h4>
-                        <p>E-mail: <a href="mailto:test@testmail.com">test@testmail.com</a></p>
-                        <p>Instagram: <a href="https://www.instagram.com/ataturkvideo/" target="_blank">@test</a></p>
+    
+    <footer class="site-footer" >
+        <div id="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Me</h4>
+                    <p>Yusuf Mert</p>
                     </div>
-                    <div class="footer-section">
-                     <h4>Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <button onclick="debug()">bazinga</button>
-                    </ul>
+                        <div class="footer-section">
+                            <h4>Contact</h4>
+                            <p>E-mail: <a href="mailto:test@testmail.com">test@testmail.com</a></p>
+                        </div>
+                        <div class="footer-section">
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <button onclick="debug()">bazinga</button>
+                        </ul>
+                    </div>
                 </div>
+            <div class="footer-bottom">
+                © 2025 Jopseps. All rights reserved.
             </div>
-        <div class="footer-bottom">
-            © 2025 Jopseps. All rights reserved.
         </div>
     </footer>
 
@@ -180,6 +184,7 @@
     <script src="../files/yksTablo/yksTabloCompass.js"></script>
     <script src="../files/yksTablo/yksTabloServer.js"></script>
     <script src="../files/yksTablo/yksTablo.js"></script>
+    <script src="../files/js/features.js"></script>
     
 
 </html>

@@ -18,7 +18,7 @@
         }else{
             colorScheme = savedTheme;
         }
-
+        
         console.log("localStorage.getItem(theme): ", localStorage.getItem("theme"));
         console.log("colorScheme: ", colorScheme);
         applyColorScheme();
@@ -40,35 +40,26 @@
             applyColorScheme();
 
         }
-
+        
         function applyColorScheme(){
+            let siteFooter = document.getElementById("footer");
+
             document.querySelector(".background").style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "rgb(187, 187, 187)";
             document.getElementById("darkModeButton").innerHTML = (colorScheme === "dark") ? "light mode" : "dark mode";
 
-            let pTexts = document.querySelectorAll("p, .straightText, .interactiveText" );
+            console.log("applying color scheme")
 
-            if(pTexts.length > 0){
-                pTexts.forEach(pText =>{
-                    pText.style.color = (colorScheme === "dark") ? "white" : "black";
+            let allTexts = document.querySelectorAll("p, .straightText, .interactiveText, h1, h2, h3, li" );
+
+            if(allTexts.length > 0){
+                allTexts.forEach(allText =>{
+                    console.log("!siteFooter.contains(allText): ", !siteFooter.contains(allText))
+                    if(!siteFooter.contains(allText)){
+                        allText.style.color = (colorScheme === "dark") ? "white" : "black";
+                    }else allText.style.color = "white";
                 });
             }
 
-            let hTexts = document.querySelectorAll("h1, h2, h3");
-
-            if(hTexts.length > 0){
-                hTexts.forEach(hText =>{
-                    hText.style.color = (colorScheme === "dark") ? "white" : "black";
-                });
-            }
-
-            let liTexts = document.querySelectorAll("li");
-
-            if(liTexts.length > 0){
-                liTexts.forEach(liText =>{
-                    liText.style.color = (colorScheme === "dark") ? "white" : "black";
-                });
-            }
-            
             let bigImages = document.querySelectorAll(".bigImage")
             
             if(bigImages.length > 0){
