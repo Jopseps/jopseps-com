@@ -127,10 +127,14 @@ function drawAllIndividuals(){
     drawCanvasThings();
     for(let i = 0; i < individuals.length; i++){
         if(i === hoveredIndividual || i === clickedIndividual){
-            if(i === clickedIndividual) writeSamePlaceList(checkIfSamePlace(individuals[i].x, individuals[i].y));
+            if(i === clickedIndividual){
+            writeSamePlaceList(checkIfSamePlace(individuals[i].x, individuals[i].y));
+            samePlaceDiv.style.visibility = "visible"
+            } 
             drawIndividual(individuals[i], true);
             drawTextbox(individuals[i]);
         } else{
+            if(!isAdded) samePlaceDiv.style.visibility = "hidden"
             drawIndividual(individuals[i], false);
         }
     }
@@ -187,6 +191,7 @@ function checkIfSamePlace(x,y){
 }
 
 function writeSamePlaceList(list){
+    if(clickedIndividual) console.log("clickedIndividual: ", individuals[clickedIndividual]);
     let writedRegex = " ";
     
     for(let i = 0; i < list.length; i++){
@@ -270,3 +275,4 @@ if(darkModeButton){
         setTimeout(drawAllIndividuals, 10);
     });
 }
+
