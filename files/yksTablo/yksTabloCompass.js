@@ -127,7 +127,7 @@ function drawAllIndividuals(){
     drawCanvasThings();
     for(let i = 0; i < individuals.length; i++){
         if(i === hoveredIndividual || i === clickedIndividual){
-            if(i === clickedIndividual) writeSamePlaceList(individuals[i].x, individuals[i].y);
+            if(i === clickedIndividual) writeSamePlaceList(checkIfSamePlace(individuals[i].x, individuals[i].y));
             drawIndividual(individuals[i], true);
             drawTextbox(individuals[i]);
         } else{
