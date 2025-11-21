@@ -25,7 +25,10 @@ canvas.addEventListener("mousemove", function (e){
             break;
         }
     }
-    drawAllIndividuals();
+    if(hoveredIndividual != null){
+        drawAllIndividuals();
+    }
+    
 });
 
 canvas.addEventListener("mouseleave", function (){
