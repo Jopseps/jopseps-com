@@ -12,6 +12,7 @@ canvas.addEventListener("mousemove", function (e){
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
+    let hoveredIndividualJustReleased = hoveredIndividual != null ? true : false;
     hoveredIndividual = null;
     for(let i = individuals.length - 1; i >= 0; i--){
         const x = adjustWidthOffset(individuals[i].value1);
@@ -25,7 +26,7 @@ canvas.addEventListener("mousemove", function (e){
             break;
         }
     }
-    if(hoveredIndividual != null){
+    if(hoveredIndividual != null || hoveredIndividualJustReleased == true){
         drawAllIndividuals();
     }
     
