@@ -14,7 +14,7 @@ canvas.addEventListener("mousemove", function (e){
     const mouseY = e.clientY - rect.top;
     let hoveredIndividualJustReleased = hoveredIndividual != null ? true : false;
     hoveredIndividual = null;
-    for(let i = individuals.length - 1; i >= 0; i--){
+    for(let i = individuals.length; i >= 0; i--){
         const x = adjustWidthOffset(individuals[i].value1);
         const y = adjustHeightOffset(-individuals[i].value2);
         const dx = mouseX - x;
@@ -194,6 +194,7 @@ function checkIfSamePlace(x,y){
             
     }
     console.log("top: ", findTheTopIndividual(x, y));
+    console.log("sameList: ", sameList);
     if(sameList.length > 0) return sameList;
     else return 0;
 }
