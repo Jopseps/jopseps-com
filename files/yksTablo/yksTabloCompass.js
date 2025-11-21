@@ -129,10 +129,10 @@ function drawAllIndividuals(){
     for(let i = 0; i < individuals.length; i++){
         if(i === hoveredIndividual || i === clickedIndividual){
             if(i === clickedIndividual){
-            writeSamePlaceList(checkIfSamePlace(individuals[i].x, individuals[i].y));
+            writeSamePlaceList(checkIfSamePlace(individuals[i].value1, individuals[i].value2));
             samePlaceDiv.style.visibility = "visible"
-            inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 20}px, ${7 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 4.7}%)`;
-            console.log(`min(${50 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 20}px, ${7 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 4.7}%)`);
+            inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 20}px, ${7 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 4.7}%)`;
+            console.log(`min(${50 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 20}px, ${7 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 4.7}%)`);
 
             } 
             drawIndividual(individuals[i], true);
