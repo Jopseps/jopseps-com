@@ -32,12 +32,12 @@ canvas.addEventListener("mouseleave", function (){
     drawAllIndividuals();
 });
 
-canvas.addEventListener("mousedown", function(){
+canvas.addEventListener("click", function(){
     if(!hoveredIndividual) clickedIndividual = hoveredIndividual;
     else clickedIndividual = null;
     console.log("clickedIndividual: ", clickedIndividual);
     drawAllIndividuals();
-})
+});
 
 
 const samePlaceDiv = document.getElementById("samePlaceDiv");
