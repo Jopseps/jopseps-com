@@ -21,6 +21,7 @@ canvas.addEventListener("mousemove", function (e){
          // 7 is the hover radius
         if(dx * dx + dy * dy < 7 * 7){
             hoveredIndividual = i;
+            if(clickedIndividual != hoveredIndividual) clickedIndividual = null;
             break;
         }
     }
@@ -130,6 +131,9 @@ function drawAllIndividuals(){
             if(i === clickedIndividual){
             writeSamePlaceList(checkIfSamePlace(individuals[i].x, individuals[i].y));
             samePlaceDiv.style.visibility = "visible"
+            inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 20}px, ${7 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 4.7}%)`;
+            console.log(`min(${50 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 20}px, ${7 + checkIfSamePlace(individuals[i].x, individuals[i].y).length * 4.7}%)`);
+
             } 
             drawIndividual(individuals[i], true);
             drawTextbox(individuals[i]);
