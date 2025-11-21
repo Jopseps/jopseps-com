@@ -35,7 +35,7 @@ canvas.addEventListener("mouseleave", function (){
 const samePlaceDiv = document.getElementById("samePlaceDiv");
 const samePlaceP = document.getElementById("samePlaceP");
 const samePlaceList = document.getElementById("samePlaceList");
-const isAddedStatus = document.getElementById("isAddedStatus");
+const statusMessage = document.getElementById("statusMessage");
 const inputTop = document.getElementById("inputTop");
 
 function adjustWidthOffset(position){
@@ -206,16 +206,16 @@ function addToData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
-            isAddedStatus.innerHTML = "You can't use the same username with another one";
-            isAddedStatus.style.visibility = "visible";
+            statusMessage.innerHTML = "You can't use the same username with another one";
+            statusMessage.style.visibility = "visible";
         }else{
-            isAddedStatus.style.visibility = "hidden";
+            statusMessage.style.visibility = "hidden";
         }
         return false
     }
 
     if(isAdded == false || isAddedFeatureActivated == false){
-        isAddedStatus.style.visibility = "hidden"; 
+        statusMessage.style.visibility = "hidden"; 
         let enteredValue1 = document.getElementById("value1Selecter").value
         let enteredValue2 = document.getElementById("value2Selecter").value
 
@@ -236,8 +236,8 @@ function addToData(){
         samePlaceList.style.position = "relative";*/
     }
     else{
-        isAddedStatus.innerHTML = "You already entered something earlier";
-        isAddedStatus.style.visibility = "visible"; 
+        statusMessage.innerHTML = "You already entered something earlier";
+        statusMessage.style.visibility = "visible"; 
         console.log("You already added");
     }
 }

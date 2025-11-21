@@ -5,16 +5,25 @@ async function addToServerData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
-            isAddedStatus.innerHTML = "You can't use the same username with another one";
-            isAddedStatus.style.visibility = "visible";
+            statusMessage.innerHTML = "You can't use the same username with another one";
+            statusMessage.style.visibility = "visible";
         }else{
-            isAddedStatus.style.visibility = "hidden";
+            statusMessage.style.visibility = "hidden";
+        }
+        return false
+    }
+    if(enteredName.length > 15){
+        if(isAdded == false || isAddedFeatureActivated == false){
+            statusMessage.innerHTML = "You can't use an username has more than 15 characters";
+            statusMessage.style.visibility = "visible";
+        }else{
+            statusMessage.style.visibility = "hidden";
         }
         return false
     }
 
     if(isAdded == false || isAddedFeatureActivated == false){
-        isAddedStatus.style.visibility = "hidden"; 
+        statusMessage.style.visibility = "hidden"; 
         let enteredValue1 = document.getElementById("value1Selecter").value 
         let enteredValue2 = document.getElementById("value2Selecter").value
         let enteredColor = document.getElementById("colorSelecter").value
@@ -50,8 +59,8 @@ async function addToServerData(){
         init();
     }
     else{
-        isAddedStatus.innerHTML = "You already entered something earlier";
-        isAddedStatus.style.visibility = "visible"; 
+        statusMessage.innerHTML = "You already entered something earlier";
+        statusMessage.style.visibility = "visible"; 
         console.log("You already added");
     }
 
