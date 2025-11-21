@@ -22,7 +22,10 @@ canvas.addEventListener("mousemove", function (e){
          // 7 is the hover radius
         if(dx * dx + dy * dy < 7 * 7){
             hoveredIndividual = i;
-            if(clickedIndividual != hoveredIndividual) clickedIndividual = null;
+            if(clickedIndividual != hoveredIndividual){
+                console.log("if(clickedIndividual) thing");
+            clickedIndividual = null;
+            }
             break;
         }
     }
