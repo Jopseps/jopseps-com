@@ -33,7 +33,7 @@ canvas.addEventListener("mouseleave", function (){
 });
 
 canvas.addEventListener("click", function(){
-    if(!hoveredIndividual) clickedIndividual = hoveredIndividual;
+    if(hoveredIndividual) clickedIndividual = hoveredIndividual;
     else clickedIndividual = null;
     console.log("clickedIndividual: ", clickedIndividual);
     drawAllIndividuals();
