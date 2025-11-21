@@ -6,6 +6,7 @@ canvasWidth = parseInt(getComputedStyle(canvas).width);
 canvasHeight = parseInt(getComputedStyle(canvas).height);
 
 let hoveredIndividual = null;
+let clickedIndividual = null;
 
 canvas.addEventListener("mousemove", function (e){
     const rect = canvas.getBoundingClientRect();
@@ -30,6 +31,13 @@ canvas.addEventListener("mouseleave", function (){
     hoveredIndividual = null;
     drawAllIndividuals();
 });
+
+canvas.addEventListener("mousedown", function(){
+    if(!hoveredIndividual) clickedIndividual = hoveredIndividual;
+    else clickedIndividual = null;
+    console.log("clickedIndividual: ", clickedIndividual);
+    drawAllIndividuals();
+})
 
 
 const samePlaceDiv = document.getElementById("samePlaceDiv");
@@ -118,7 +126,8 @@ function drawCanvasThings(){
 function drawAllIndividuals(){
     drawCanvasThings();
     for(let i = 0; i < individuals.length; i++){
-        if(i === hoveredIndividual){
+        if(i === hoveredIndividual || i === clickedIndividual){
+            if(i === clickedIndividual) writeSamePlaceList(i.x, i.y);
             drawIndividual(individuals[i], true);
             drawTextbox(individuals[i]);
         } else{
