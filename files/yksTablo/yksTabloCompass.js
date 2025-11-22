@@ -14,7 +14,7 @@ canvas.addEventListener("mousemove", function (e){
     const mouseY = e.clientY - rect.top;
     let hoveredIndividualJustReleased = hoveredIndividual != null ? true : false;
     hoveredIndividual = null;
-    for(let i = individuals.length - 1; i >= 0; i--){
+    for(let i = 0; i < individuals.length; i--){
         const x = adjustWidthOffset(individuals[i].value1);
         const y = adjustHeightOffset(-individuals[i].value2);
         const dx = mouseX - x;
