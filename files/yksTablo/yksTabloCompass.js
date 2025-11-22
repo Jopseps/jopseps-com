@@ -24,7 +24,8 @@ canvas.addEventListener("mousemove", function (e){
             hoveredIndividual = i;
             if(clickedIndividual != hoveredIndividual){
                 console.log("if(clickedIndividual) thing");
-            clickedIndividual = null;
+                console.log("if(clickedIndividual) thing clickedIndividual: ", clickedIndividual);
+                clickedIndividual = null;
             }
             break;
         }
@@ -198,6 +199,7 @@ function checkIfSamePlace(x,y){
     }
     console.log("top: ", findTheTopIndividual(x, y));
     console.log("sameList: ", sameList);
+    console.log("clickedIndividual: ", clickedIndividual);
     if(sameList.length > 0) return sameList;
     else return 0;
 }
