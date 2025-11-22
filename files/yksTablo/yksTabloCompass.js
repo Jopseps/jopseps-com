@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 canvasWidth = parseInt(getComputedStyle(canvas).width);
 canvasHeight = parseInt(getComputedStyle(canvas).height);
 
-let hoveredIndividual = null;
+let hoveredIndividual = -1;
 let clickedIndividual = null;
 
 canvas.addEventListener("mousemove", function (e){
@@ -13,8 +13,8 @@ canvas.addEventListener("mousemove", function (e){
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     let hoveredIndividualJustReleased = hoveredIndividual != null ? true : false;
-    hoveredIndividual = null;
-    for(let i = 0; i < individuals.length; i++){
+    hoveredIndividual = -1;
+    for(let i = individuals.length - 1; i >= 0; i--){
         const x = adjustWidthOffset(individuals[i].value1);
         const y = adjustHeightOffset(-individuals[i].value2);
         const dx = mouseX - x;
@@ -24,26 +24,25 @@ canvas.addEventListener("mousemove", function (e){
             hoveredIndividual = i;
             if(clickedIndividual != hoveredIndividual){
                 console.log("if(clickedIndividual) thing");
-                console.log("if(clickedIndividual) thing hoveredIndividual: ", hoveredIndividual);
                 console.log("if(clickedIndividual) thing clickedIndividual: ", clickedIndividual);
                 clickedIndividual = null;
             }
             break;
         }
     }
-    if(hoveredIndividual != null || hoveredIndividualJustReleased == true){
+    if(hoveredIndividual > -1 || hoveredIndividualJustReleased == true){
         drawAllIndividuals();
     }
     
 });
 
 canvas.addEventListener("mouseleave", function (){
-    hoveredIndividual = null;
+    hoveredIndividual = -1;
     drawAllIndividuals();
 });
 
 canvas.addEventListener("click", function(){
-    if(hoveredIndividual) clickedIndividual = hoveredIndividual;
+    if(hoveredIndividual > -1) clickedIndividual = hoveredIndividual;
     else clickedIndividual = null;
     console.log("clickedIndividual: ", clickedIndividual);
     drawAllIndividuals();
