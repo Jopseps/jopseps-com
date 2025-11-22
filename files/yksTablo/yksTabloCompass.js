@@ -199,7 +199,7 @@ function checkIfSamePlace(x,y){
     }
     console.log("top: ", findTheTopIndividual(x, y));
     console.log("sameList: ", sameList);
-    console.log("clickedIndividual: ", clickedIndividual);
+    console.log("clickedIndividual: ", individuals[clickedIndividual]);
     if(sameList.length > 0) return sameList;
     else return 0;
 }
