@@ -22,9 +22,9 @@ canvas.addEventListener("mousemove", function (e){
          // 7 is the hover radius
         if(dx * dx + dy * dy < 7 * 7){
             hoveredIndividual = i;
-            if(clickedIndividual != hoveredIndividual){
+            if(clickedIndividual != hoveredIndividual && !hoveredIndividualJustReleased){
                 console.log("if(clickedIndividual) thing");
-                console.log("if(clickedIndividual) thing clickedIndividual: ", clickedIndividual);
+                console.log("if(clickedIndividual) thin g clickedIndividual: ", clickedIndividual);
                 clickedIndividual = null;
             }
             break;
