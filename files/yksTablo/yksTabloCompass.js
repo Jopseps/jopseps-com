@@ -24,6 +24,7 @@ canvas.addEventListener("mousemove", function (e){
             hoveredIndividual = i;
             if(clickedIndividual != hoveredIndividual){
                 console.log("if(clickedIndividual) thing");
+                console.log("if(clickedIndividual) thing hoveredIndividual: ", hoveredIndividual);
                 console.log("if(clickedIndividual) thing clickedIndividual: ", clickedIndividual);
                 clickedIndividual = null;
             }
