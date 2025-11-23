@@ -56,11 +56,11 @@ const statusMessage = document.getElementById("statusMessage");
 const inputTop = document.getElementById("inputTop");
 
 function adjustWidthOffset(position){
-    return ((position * canvasWidth / 20) + (canvasWidth / 2));
+    return ((position * canvasWidth / 22) + (canvasWidth / 2));
 }
 
 function adjustHeightOffset(position){
-    return ((position * canvasHeight / 20) + (canvasHeight / 2));
+    return ((position * canvasHeight / 22) + (canvasHeight / 2));
 }
 
 
