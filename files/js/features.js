@@ -43,13 +43,14 @@
         
         function applyColorScheme(){
             let siteFooter = document.getElementById("footer");
+            let noDarkModeThings = document.getElementsByClassName("noDarkMode");
 
             document.querySelector(".background").style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "rgb(187, 187, 187)";
             document.getElementById("darkModeButton").innerHTML = (colorScheme === "dark") ? "light mode" : "dark mode";
 
             console.log("applying color scheme")
 
-            let allTexts = document.querySelectorAll("p, .straightText, .interactiveText, h1, h2, h3, li" );
+            let allTexts = document.querySelectorAll("p, .straightText, .interactiveText, h1, h2, h3, li");
 
             if(allTexts.length > 0){
                 allTexts.forEach(allText =>{

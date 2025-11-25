@@ -1,5 +1,4 @@
 const padding = 40
-
 class individual{
     individualsName;
     value1;
