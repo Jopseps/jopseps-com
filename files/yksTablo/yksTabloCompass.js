@@ -205,14 +205,14 @@ function checkIfSamePlace(x,y){
 }
 
 function writeSamePlaceList(list){
-    if(clickedIndividual) console.log("clickedIndividual: ", individuals[clickedIndividual]);
+    //if(clickedIndividual) console.log("clickedIndividual: ", individuals[clickedIndividual]);
     let writedRegex = " ";
     
     for(let i = 0; i < list.length; i++){
         writedRegex += `<li class="noDarkMode" style="color: ${list[i].color}"><span>${list[i].individualsName}</span></li>`
     }
     samePlaceList.innerHTML = writedRegex;
-    spesificApplyColorScheme(samePlaceList);
+    spesificApplyColorScheme(samePlaceList.childNodes);
 }
 
 function findTheTopIndividual(x, y){
