@@ -23,8 +23,8 @@ canvas.addEventListener("mousemove", function (e){
         if(dx * dx + dy * dy < 7 * 7){
             hoveredIndividual = i;
             if(clickedIndividual != hoveredIndividual && clickedIndividual != null){
-                console.log("if(clickedIndividual) thing");
-                console.log("if(clickedIndividual) thing clickedIndividual: ", clickedIndividual);
+                //console.log("if(clickedIndividual) thing");
+                //console.log("if(clickedIndividual) thing clickedIndividual: ", clickedIndividual);
                 clickedIndividual = null;
             }
             break;
@@ -140,7 +140,7 @@ function drawAllIndividuals(){
             writeSamePlaceList(checkIfSamePlace(individuals[i].value1, individuals[i].value2));
             samePlaceDiv.style.visibility = "visible"
             inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 20}px, ${7 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 4.7}%)`;
-            console.log(`min(${50 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 20}px, ${7 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 4.7}%)`);
+            //console.log(`min(${50 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 20}px, ${7 + checkIfSamePlace(individuals[i].value1, individuals[i].value2).length * 4.7}%)`);
 
             } 
             drawIndividual(individuals[i], true);
@@ -186,7 +186,7 @@ function drawTextbox(individual){
 
 function checkIfSamePlace(x,y){
     let sameList = [];
-    console.log("individuals.length", individuals.length)
+    //console.log("individuals.length", individuals.length)
     for(let i = 0; i < individuals.length; i++){
         //console.log("searching in",individuals[i].value1, ", ", individuals[i].value2);
 
@@ -197,9 +197,9 @@ function checkIfSamePlace(x,y){
         }
             
     }
-    console.log("top: ", findTheTopIndividual(x, y));
-    console.log("sameList: ", sameList);
-    console.log("clickedIndividual: ", individuals[clickedIndividual]);
+    //console.log("top: ", findTheTopIndividual(x, y));
+    //console.log("sameList: ", sameList);
+    //console.log("clickedIndividual: ", individuals[clickedIndividual]);
     if(sameList.length > 0) return sameList;
     else return 0;
 }
@@ -217,10 +217,10 @@ function writeSamePlaceList(list){
 
 function findTheTopIndividual(x, y){
     for(let i = individuals.length - 1; i >= 0; i--){
-        console.log("searching");
+        //console.log("searching");
 
         if(x == individuals[i].value1 && y == individuals[i].value2){
-            console.log("top of the place: ", individuals[i].individualsName);
+            //console.log("top of the place: ", individuals[i].individualsName);
             return individuals[i];
             
         }
