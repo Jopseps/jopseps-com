@@ -141,6 +141,11 @@
         }
 
 
+        #samePlaceList span{
+            color:unset
+
+        }
+
         
         #darkModeButton{
             display: flex;

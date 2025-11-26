@@ -223,11 +223,10 @@ function findTheTopIndividual(x, y){
             return individuals[i];
             
         }
-            
+        
     }  
 
     return 0;
-    
 }
 
 function addToData(){
