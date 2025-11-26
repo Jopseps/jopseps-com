@@ -188,10 +188,10 @@ function checkIfSamePlace(x,y){
     let sameList = [];
     console.log("individuals.length", individuals.length)
     for(let i = 0; i < individuals.length; i++){
-        console.log("searching in",individuals[i].value1, ", ", individuals[i].value2);
+        //console.log("searching in",individuals[i].value1, ", ", individuals[i].value2);
 
         if(x == individuals[i].value1 && y == individuals[i].value2){
-            console.log("same place found: ", individuals[i].individualsName);
+            //console.log("same place found: ", individuals[i].individualsName);
             sameList.push(individuals[i]);
             
         }
