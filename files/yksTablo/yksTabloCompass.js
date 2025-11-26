@@ -212,7 +212,7 @@ function writeSamePlaceList(list){
         writedRegex += `<li class="noDarkMode" style="color: ${list[i].color}"><span>${list[i].individualsName}</span></li>`
     }
     samePlaceList.innerHTML = writedRegex;
-    spesificApplyColorScheme(samePlaceList.childNodes);
+    spesificApplyColorScheme(Array.from(samePlaceList.childNodes));
 }
 
 function findTheTopIndividual(x, y){
