@@ -96,9 +96,7 @@ function spesificApplyColorScheme(elements){
         elements.forEach(element =>{
             console.log("element.innerHTML: ", element.innerHTML)
             console.log("spesificApplyColorScheme loop")
-            if(element.classList && !element.classList.contains("noDarkMode")){
-                element.style.color = (colorScheme === "dark") ? "white" : "black";
-            }
+            element.style.color = (colorScheme === "dark") ? "white" : "black";
         });
     }
 }
