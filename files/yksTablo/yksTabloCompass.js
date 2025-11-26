@@ -209,7 +209,7 @@ function writeSamePlaceList(list){
     let writedRegex = " ";
     
     for(let i = 0; i < list.length; i++){
-        writedRegex += `<li>${list[i].individualsName}</li>`
+        writedRegex += `<li class="noDarkMode" style="color: ${list[i].color}"><span>${list[i].individualsName}</span></li>`
     }
     samePlaceList.innerHTML = writedRegex;
 }

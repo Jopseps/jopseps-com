@@ -50,14 +50,14 @@
 
             console.log("applying color scheme")
 
-            let allTexts = document.querySelectorAll("p, .straightText, .interactiveText, h1, h2, h3, li");
+            let allTexts = document.querySelectorAll("p, .straightText, .interactiveText, h1, h2, h3, li, span");
 
             if(allTexts.length > 0){
                 allTexts.forEach(allText =>{
                     console.log("!siteFooter.contains(allText): ", !siteFooter.contains(allText))
-                    if(!siteFooter.contains(allText)){
+                    if(!siteFooter.contains(allText) && !allText.classList.contains("noDarkMode")){
                         allText.style.color = (colorScheme === "dark") ? "white" : "black";
-                    }else allText.style.color = "white";
+                    }
                 });
             }
 
