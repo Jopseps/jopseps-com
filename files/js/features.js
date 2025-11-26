@@ -92,6 +92,7 @@ function spesificApplyColorScheme(elements){
     console.log("spesificApplyColorScheme")
     if(elements.length > 0){
         elements.forEach(element =>{
+            console.log("spesificApplyColorScheme loop")
             if(element.classList && !element.classList.contains("noDarkMode")){
                 element.style.color = (colorScheme === "dark") ? "white" : "black";
             }
