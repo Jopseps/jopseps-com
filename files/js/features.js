@@ -94,8 +94,8 @@ function spesificApplyColorSchemeToChildren(elements){
     console.log("elements.children: ", elements.children);
     console.log("elements.innerHTML: ", elements.innerHTML);
     console.log("spesificApplyColorScheme");
-    if (elements.children.length > 0) {
-        Array.from(elements.children).forEach(element => {
+    if(elements && elements.children && elements.children.length > 0){
+        Array.from(elements.children).forEach(element =>{
             console.log("element.innerHTML: ", element.innerHTML);
             console.log("spesificApplyColorScheme loop");
             element.style.color = (colorScheme === "dark") ? "white" : "black";
