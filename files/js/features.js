@@ -89,18 +89,13 @@ function applyColorScheme(){
 }
 
 // yeah pretty long name
-function spesificApplyColorSchemeToChildren(elements){
-    console.log("elements: ", elements);
-    console.log("elements.children: ", elements.children);
-    console.log("elements.innerHTML: ", elements.innerHTML);
-    console.log("Array.from(elements.children): ", Array.from(elements.children))
-    console.log("Array.from(elements.children)[0]: ", Array.from(elements.children)[0])
-    console.log("spesificApplyColorScheme");
-    if(elements && elements.children && elements.children.length > 0){
-        Array.from(elements.children).forEach(element =>{
-            console.log("element.innerHTML: ", element.innerHTML);
-            console.log("spesificApplyColorScheme loop");
-            element.style.color = (colorScheme === "dark") ? "white" : "black";
+function spesificApplyColorSchemeToChildren(container){
+    if(container && container.children && container.children.length > 0){
+        Array.from(container.children).forEach(li =>{
+            let span = li.querySelector("span");
+            if(span){
+                span.style.color = (colorScheme === "dark") ? "white" : "black";
+            }
         });
     }
 }
