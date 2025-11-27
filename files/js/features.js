@@ -43,7 +43,7 @@ function switchColorScheme(){
 
 function applyColorScheme(){
     let siteFooter = document.getElementById("footer");
-    let noDarkModeThings = document.getElementsByClassName("noDarkMode");
+    //let noDarkModeThings = document.getElementsByClassName("noDarkMode");
 
     document.querySelector(".background").style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "rgb(187, 187, 187)";
     document.getElementById("darkModeButton").innerHTML = (colorScheme === "dark") ? "light mode" : "dark mode";
@@ -93,6 +93,8 @@ function spesificApplyColorSchemeToChildren(elements){
     console.log("elements: ", elements);
     console.log("elements.children: ", elements.children);
     console.log("elements.innerHTML: ", elements.innerHTML);
+    console.log("Array.from(elements.children): ", Array.from(elements.children))
+    console.log("Array.from(elements.children)[0]: ", Array.from(elements.children)[0])
     console.log("spesificApplyColorScheme");
     if(elements && elements.children && elements.children.length > 0){
         Array.from(elements.children).forEach(element =>{
