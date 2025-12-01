@@ -1,4 +1,5 @@
-let serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
+const serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
+const turnstileID = document.getElementById("turnstile-div");
 
 
 async function addToServerData(){
@@ -76,28 +77,12 @@ async function addToServerData(){
 }*/
 
 
-async function checkIfAdded(){
-    try{
-        let response = await fetch(serverLink, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({  })
-    }); 
+async function checkIfCanAdd(){
+    if()
 
-        const data = await response.json();
-        console.log("DEBUG | getServerData() returned ", data);
-        console.log(JSON.stringify(data));
-        console.log("data: ", data);
-        return await data;
-
-    }catch(error){
-        console.log("DEBUG | checkIfAdded() returned 1", error);
-        return true;
-    }
 
 
 }
-
 
 async function getServerData(){
     try{
