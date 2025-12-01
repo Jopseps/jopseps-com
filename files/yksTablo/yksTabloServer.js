@@ -1,7 +1,6 @@
 const serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
 const turnstileID = document.getElementById("turnstile-div");
 
-
 async function addToServerData(){
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
@@ -76,7 +75,9 @@ async function addToServerData(){
     // push to server
 }*/
 
-
+function onSuccess(token) {
+    turnstile.remove(widgetId);
+}
 
 async function getServerData(){
     try{
