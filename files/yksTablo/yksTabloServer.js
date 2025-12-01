@@ -11,7 +11,7 @@ async function addToServerData(){
             statusMessage.style.visibility = "hidden";
         }
         return false
-    }
+    }   
     if(enteredName.length > 15){
         if(isAdded == false || isAddedFeatureActivated == false){
             statusMessage.innerHTML = "You can't use an username has more than 15 characters";
@@ -23,7 +23,7 @@ async function addToServerData(){
     }
 
     if(isAdded == false || isAddedFeatureActivated == false){
-        statusMessage.style.visibility = "hidden"; 
+        statusMessage.style.visibility = "hidden";
         let enteredValue1 = document.getElementById("value1Selecter").value 
         let enteredValue2 = document.getElementById("value2Selecter").value
         let enteredColor = document.getElementById("colorSelecter").value
@@ -76,16 +76,32 @@ async function addToServerData(){
 }*/
 
 
-function debug() {
-    
+async function checkIfAdded(){
+    try{
+        let response = await fetch(serverLink, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({  })
+    }); 
+
+        const data = await response.json();
+        console.log("DEBUG | getServerData() returned ", data);
+        console.log(JSON.stringify(data));
+        console.log("data: ", data);
+        return await data;
+
+    }catch(error){
+        console.log("DEBUG | checkIfAdded() returned 1", error);
+        return true;
+    }
 
 
 }
 
 
 async function getServerData(){
-    try {
-        let response = await fetch(serverLink, {
+    try{
+        let response = await fetch(serverLink,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ canIgetUhhh: "Some json files" })
@@ -97,7 +113,7 @@ async function getServerData(){
         console.log("data: ", data);
         return await data;
 
-    } catch (error) {
+    }catch (error){
         console.log("DEBUG | getServerData() returned 0", error);
         return false;
     }
