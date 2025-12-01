@@ -75,8 +75,8 @@ async function addToServerData(){
     // push to server
 }*/
 
-function onSuccess(token) {
-    turnstile.remove(widgetId);
+function onSuccess(){
+    turnstile.remove(turnstileID);
 }
 
 async function getServerData(){
