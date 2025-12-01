@@ -77,12 +77,6 @@ async function addToServerData(){
 }*/
 
 
-async function checkIfCanAdd(){
-    if()
-
-
-
-}
 
 async function getServerData(){
     try{
