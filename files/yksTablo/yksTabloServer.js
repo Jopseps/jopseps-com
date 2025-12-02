@@ -1,7 +1,15 @@
-let serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
+const serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
+const turnstileID = document.getElementById("turnstile-div");
 
+let turnstileToken = null;
 
 async function addToServerData(){
+    if(!checkIfCaptchaIsOk()){
+        statusMessage.innerHTML = "Please complete the captcha verification.";
+        statusMessage.style.visibility = "visible";
+        return false;
+    }
+
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
@@ -11,7 +19,7 @@ async function addToServerData(){
             statusMessage.style.visibility = "hidden";
         }
         return false
-    }   
+    }
     if(enteredName.length > 15){
         if(isAdded == false || isAddedFeatureActivated == false){
             statusMessage.innerHTML = "You can't use an username has more than 15 characters";
@@ -30,15 +38,19 @@ async function addToServerData(){
         console.log("enteredColor: ", enteredColor);
 
         let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, enteredColor);
+        let sendingRequestBody = [];
+        sendingRequestBody[0] = turnstileToken;
+        sendingRequestBody[1] = pushingIndividual;
 
         // asking server to put and will
         let response = await fetch(serverLink, {
             method: "PUT",
+            mode: "cors",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(pushingIndividual)
+            body: JSON.stringify(sendingRequestBody)
         });
         
-        if (!response.ok) {
+        if(!response.ok){
             console.log("something went wrong while adding to server data");
         }
 
@@ -55,7 +67,7 @@ async function addToServerData(){
         inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
 
         console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
-
+        turnstile.reset(turnstileID);
         init();
     }
     else{
@@ -75,29 +87,14 @@ async function addToServerData(){
     // push to server
 }*/
 
-
-async function checkIfAdded(){
-    try{
-        let response = await fetch(serverLink, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({  })
-    }); 
-
-        const data = await response.json();
-        console.log("DEBUG | getServerData() returned ", data);
-        console.log(JSON.stringify(data));
-        console.log("data: ", data);
-        return await data;
-
-    }catch(error){
-        console.log("DEBUG | checkIfAdded() returned 1", error);
-        return true;
-    }
-
-
+function onSuccess(token){
+    turnstileToken = token;
+    if(statusMessage) statusMessage.style.visibility = "hidden";
 }
 
+function onTurnstileExpired() {
+    console.log("Turnstile token expired");
+}
 
 async function getServerData(){
     try{
@@ -118,4 +115,12 @@ async function getServerData(){
         return false;
     }
 
+}
+
+// check and update the status to the status div thing
+function checkIfCaptchaIsOk(){
+    if(turnstileToken){
+        return true;
+    }
+    return false;
 }
