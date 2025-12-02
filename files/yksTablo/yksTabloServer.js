@@ -45,6 +45,7 @@ async function addToServerData(){
         // asking server to put and will
         let response = await fetch(serverLink, {
             method: "PUT",
+            mode: "cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(sendingRequestBody)
         });
@@ -66,7 +67,7 @@ async function addToServerData(){
         inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
 
         console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
-
+        turnstile.reset(turnstileID);
         init();
     }
     else{
@@ -89,6 +90,10 @@ async function addToServerData(){
 function onSuccess(token){
     turnstileToken = token;
     if(statusMessage) statusMessage.style.visibility = "hidden";
+}
+
+function onTurnstileExpired() {
+    console.log("Turnstile token expired");
 }
 
 async function getServerData(){
