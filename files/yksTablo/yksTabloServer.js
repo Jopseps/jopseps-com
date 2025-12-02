@@ -1,7 +1,15 @@
 const serverLink = "https://yks-tablo.yusufmertturan.workers.dev";
 const turnstileID = document.getElementById("turnstile-div");
 
+let turnstileToken = null;
+
 async function addToServerData(){
+    if(!checkIfCaptchaIsOk()){
+        statusMessage.innerHTML = "Please complete the captcha verification.";
+        statusMessage.style.visibility = "visible";
+        return false;
+    }
+
     let enteredName = document.getElementById("individualsNameInput").value;
     if(checkSameUsername(enteredName) == true){
         if(isAdded == false || isAddedFeatureActivated == false){
@@ -75,8 +83,9 @@ async function addToServerData(){
     // push to server
 }*/
 
-function onSuccess(){
-    turnstile.remove(turnstileID);
+function onSuccess(token){
+    turnstileToken = token;
+    if(statusMessage) statusMessage.style.visibility = "hidden";
 }
 
 async function getServerData(){
@@ -98,4 +107,12 @@ async function getServerData(){
         return false;
     }
 
+}
+
+// check and update the status to the status div thing
+function checkIfCaptchaIsOk(){
+    if(turnstileToken){
+        return true;
+    }
+    return false;
 }
