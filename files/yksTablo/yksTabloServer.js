@@ -40,7 +40,7 @@ async function addToServerData(){
         let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, enteredColor);
         let sendingRequestBody = [];
         sendingRequestBody[0] = turnstileToken;
-        sendingRequestBody[1] = JSON.stringify(pushingIndividual);
+        sendingRequestBody[1] = pushingIndividual;
 
         // asking server to put and will
         let response = await fetch(serverLink, {
