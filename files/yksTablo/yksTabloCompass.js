@@ -146,7 +146,6 @@ function drawAllIndividuals(){
             drawIndividual(individuals[i], true);
             drawTextbox(individuals[i]);
         } else{
-            if(!isAdded) samePlaceDiv.style.visibility = "hidden"
             drawIndividual(individuals[i], false);
         }
     }
