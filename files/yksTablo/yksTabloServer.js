@@ -19,7 +19,7 @@ async function addToServerData(){
             statusMessage.style.visibility = "hidden";
         }
         return false
-    }   
+    }
     if(enteredName.length > 15){
         if(isAdded == false || isAddedFeatureActivated == false){
             statusMessage.innerHTML = "You can't use an username has more than 15 characters";
@@ -38,15 +38,18 @@ async function addToServerData(){
         console.log("enteredColor: ", enteredColor);
 
         let pushingIndividual = new individual(enteredName, enteredValue1, enteredValue2, enteredColor);
+        let sendingRequestBody = [];
+        sendingRequestBody[0] = turnstileToken;
+        sendingRequestBody[1] = pushingIndividual;
 
         // asking server to put and will
         let response = await fetch(serverLink, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(pushingIndividual)
+            body: JSON.stringify(sendingRequestBody)
         });
         
-        if (!response.ok) {
+        if(!response.ok){
             console.log("something went wrong while adding to server data");
         }
 
