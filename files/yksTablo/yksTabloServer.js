@@ -89,10 +89,11 @@ async function addToServerData(){
 
 function onSuccess(token){
     turnstileToken = token;
+    turnstile.remove();
     if(statusMessage) statusMessage.style.visibility = "hidden";
 }
 
-function onTurnstileExpired() {
+function onTurnstileExpired(){
     console.log("Turnstile token expired");
 }
 
