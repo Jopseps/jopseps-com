@@ -100,7 +100,7 @@ function onTurnstileExpired() {
 function restoreTurnstile(){
     if(turnstileID !== null) return;
 
-    turnstileID = turnstile.render('#turnstile-wrapper', {
+    turnstileID = turnstile.render('#turnstile-div', {
             sitekey: '0x4AAAAAACD9SDiGK_EtYqGb',
             callback: function(token) {
                 console.log('Token received:', token);
