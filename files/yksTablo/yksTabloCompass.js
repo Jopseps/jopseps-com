@@ -245,9 +245,10 @@ function addToData(){
         statusMessage.style.visibility = "hidden"; 
         let enteredValue1 = document.getElementById("value1Selecter").value
         let enteredValue2 = document.getElementById("value2Selecter").value
+        let enteredColor = document.getElementById("colorSelecter").value
 
         writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
-        individuals.push(new individual(enteredName, enteredValue1, enteredValue2, "green"));
+        individuals.push(new individual(enteredName, enteredValue1, enteredValue2, enteredColor));
         isAdded = true;
         localStorage.setItem("isAdded", isAdded);
         drawAllIndividuals();

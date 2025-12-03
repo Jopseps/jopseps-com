@@ -67,7 +67,7 @@ async function addToServerData(){
         inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
 
         console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
-        turnstile.reset(turnstileID);
+        restoreTurnstile();
         init();
     }
     else{
@@ -89,11 +89,32 @@ async function addToServerData(){
 
 function onSuccess(token){
     turnstileToken = token;
+    turnstile.remove();
     if(statusMessage) statusMessage.style.visibility = "hidden";
 }
 
 function onTurnstileExpired() {
     console.log("Turnstile token expired");
+}
+
+function restoreTurnstile(){
+    if(turnstileID !== null) return;
+
+    turnstileID = turnstile.render('#turnstile-div', {
+            sitekey: '0x4AAAAAACD9SDiGK_EtYqGb',
+            callback: function(token) {
+                console.log('Token received:', token);
+            }
+    });
+}
+
+function removeTurnstile(){
+    if(turnstileID !== null){
+        turnstile.remove(turnstileID);
+        turnstileID = null;
+    }
+
+
 }
 
 async function getServerData(){
