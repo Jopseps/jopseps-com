@@ -67,7 +67,7 @@ async function addToServerData(){
         inputTop.style.paddingTop = `min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`;
 
         console.log(`min(${50 + checkIfSamePlace(enteredValue1, enteredValue2).length * 20}px, ${7 + checkIfSamePlace(enteredValue1, enteredValue2).length * 4.7}%)`);
-        document.getElementById("turnstile-container").style.visibility = "visible";
+        document.getElementById("turnstile-container").innerHTML = turnstileInnerHTML;
         turnstile.reset(turnstileID)
         init();
     }
@@ -88,9 +88,11 @@ async function addToServerData(){
     // push to server
 }*/
 
+const turnstileInnerHTML = document.getElementById("turnstile-container").innerHTML;
+
 function onSuccess(token){
     turnstileToken = token;
-    document.getElementById("turnstile-container").style.visibility = "hidden";
+    document.getElementById("turnstile-container").innerHTML = "";
     if(statusMessage) statusMessage.style.visibility = "hidden";
 }
 
