@@ -51,7 +51,7 @@ async function addToServerData(){
         });
         
         if(!response.ok){
-            console.log("something went wrong while adding to server data");
+            console.log("something went wrong while adding to server data", response);
         }
 
         writeSamePlaceList(checkIfSamePlace(enteredValue1, enteredValue2));
@@ -110,7 +110,7 @@ async function getServerData(){
         console.log("data: ", data);
         return await data;
 
-    }catch (error){
+    }catch(error){
         console.log("DEBUG | getServerData() returned 0", error);
         return false;
     }
