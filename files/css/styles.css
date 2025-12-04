@@ -145,6 +145,10 @@
             color: initial;
         }
 
+        .bigInput{
+            width: max(70%, 350px);
+        }
+
         
         #darkModeButton{
             display: flex;
