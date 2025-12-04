@@ -29,26 +29,31 @@ function morseToChar(character){
         ' ': ' ','': ' ',
         '.-..-': 'İ', '---.': 'Ö',  '..--': 'Ü'
     }
-
+    // A , * = --., --. *** = A
     return char[character] || ' '
 }
 
 function morseCodeToText(morseCode){
     let currentMorse = '';
+    let returningText = '';
     // string array marker
     let marker = 0;
-
+    // ..- --
     while(marker < morseCode.length){
-        while(morseCode[marker] != ' '){
+        while(marker < morseCode.length &&  morseCode[marker] != ' '){
             currentMorse += morseCode[marker];
             marker += 1;
         }
+        
         returningText += morseToChar(currentMorse);
-        marker += 1;
         currentMorse = '';
+        if(morseCode[marker] == ' '){
+            marker += 1;
+            returningText += ' ';
+        }
     }
 
-
+    return returningText;
 }
 
 function textToMorse(text){
@@ -64,3 +69,6 @@ function textToMorse(text){
 }
 
 console.log(textToMorse("adaönünü nününü "));
+console.log(morseToChar("--"))
+console.log(morseCodeToText("-- -- - -- --- --- --- --"))
+console.log(morseCodeToText(textToMorse("adaönünü nününü "))); 
