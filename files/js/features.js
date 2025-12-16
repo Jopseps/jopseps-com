@@ -86,6 +86,24 @@ function applyColorScheme(){
             projectCard.style.color = (colorScheme === "dark") ? "rgb(255, 255, 255)" : "rgb(85, 85, 85)";
         });
     }
+
+    // wiki-like components
+    let wikiBoxes = document.querySelectorAll(".wiki-toc, .wiki-infobox");
+    if(wikiBoxes.length > 0){
+        wikiBoxes.forEach(box =>{
+            box.style.backgroundColor = (colorScheme === "dark") ? "rgb(50, 50, 50)" : "rgb(255, 255, 255)";
+            box.style.borderColor = (colorScheme === "dark") ? "rgb(220, 220, 220)" : "rgb(204, 204, 204)";
+        });
+    }
+
+    let wikiBadges = document.querySelectorAll(".wiki-badge");
+    if(wikiBadges.length > 0){
+        wikiBadges.forEach(badge =>{
+            badge.style.backgroundColor = (colorScheme === "dark") ? "rgb(60, 60, 60)" : "rgb(240, 240, 240)";
+            badge.style.borderColor = (colorScheme === "dark") ? "rgb(150, 150, 150)" : "rgb(200, 200, 200)";
+            badge.style.color = (colorScheme === "dark") ? "white" : "black";
+        });
+    }
 }
 
 // yeah pretty long name

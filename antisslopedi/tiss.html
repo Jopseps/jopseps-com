@@ -1,85 +1,123 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <body class="background">
-
         <link rel="stylesheet" href="/files/css/styles.css">
-
-        <title>Jopseps</title>
+        <title>Jopseps Wiki</title>
         <link rel="icon" type="image/x-icon" href="https://github.com/Jopseps/jopseps-com/blob/main/files/images/realtemmu.png?raw=true">
-
     </head>
-    
-    <div class="topNavigation">
-        <!--Real-->
-        
-    </div>
+    <body class="background">
+        <div class="topNavigation"></div>
 
-    <body>
         <div class="site-wrapper">
             <main class="site-content">
-
-                
-                
                 <div class="container-right">
                     <button id="darkModeButton" onclick="switchColorScheme()">dark mode</button>
                 </div>
-                <h1 style="text-align: center; font-size: 300%;" class="straightText">Jopseps</h1>
-                <h1 style="text-align: center; font-size: 100%;" class="straightText">I love placeholders</h1>
+
+                <h1 class="straightText" style="text-align:center; font-size: 300%;">Jopseps Wiki</h1>
+                <p class="straightText" style="text-align:center; font-size: 110%; opacity: 0.9;">A fandom-style page layout demo</p>
 
                 <div class="interactiveText-wrapper" style="justify-content: flex-start; padding-left: 10%; padding-top: 15px;">
                     <a href="/index.html"><h3 class="interactiveText" style="text-align: left; font-weight: 900;">Back to Home</h3></a>
                 </div>
 
-                <div class="tissContainer" style="justify-content: center; margin-right: max(10px, 10%);">
-                    <div style="overflow: visible; size: 400%;">
-                        <img src="/files/images/gelincik.png" alt="tissName" id="tissImage" class="tissImage" style="position: relative; max-width: 90%; width: max(300px ,200%); height: auto;">
-                    </div>
-                    
-                    <div id="tissText" style="margin-top: min(25px, 2.5%);">
-                        <h1 style="font-size: 25pt;">ADANA ADANA ADANA</h1>
-                        <div class="tissDescriptonText" style="width: auto;">
-                            <p style="font-size: max(15pt); margin-top: max(10px, 1%);">ZİGGS BOZONU ZİGGS BOZONU ZİGGS BOZONU ZİGGS BOZONU ZİGGS BOZONU ZİGGS BOZONU ZİGGS BOZONU </p>
+                <section class="wiki-grid">
+                    <nav class="wiki-toc" id="wiki-toc" aria-label="Contents">
+                        <div class="wiki-toc-title">Contents</div>
+                        <ol id="wiki-toc-list"></ol>
+                    </nav>
+
+                    <article class="wiki-article" id="article">
+                        <header class="wiki-lead">
+                            <h1 class="wiki-title">Gelincik</h1>
+                            <p class="wiki-summary">Gelincik is a placeholder article showcasing a fandom/wiki-style layout with an infobox, table of contents, and structured sections.</p>
+                        </header>
+
+                        <section class="wiki-section">
+                            <h2>Overview</h2>
+                            <p>Gelincik is presented here as an example entry. The goal is to demonstrate a clean, readable wiki layout that works with the site’s dark mode and general styling.</p>
+                        </section>
+
+                        <section class="wiki-section">
+                            <h2>History</h2>
+                            <p>This section shows how longer content flows alongside a right-aligned infobox and a left-aligned sticky table of contents.</p>
+                            <h3>Early Days</h3>
+                            <p>Early mentions are purely illustrative. Replace with real content.</p>
+                            <h3>Recent Developments</h3>
+                            <p>Recent updates continue to evolve this example into a reusable template.</p>
+                        </section>
+
+                        <section class="wiki-section">
+                            <h2>Characteristics</h2>
+                            <ul>
+                                <li>Simple, readable typography</li>
+                                <li>Sticky table of contents for quick navigation</li>
+                                <li>Right-side infobox for key facts</li>
+                            </ul>
+                        </section>
+
+                        <section class="wiki-section">
+                            <h2>References</h2>
+                            <ol class="wiki-references">
+                                <li>Placeholder Reference 1</li>
+                                <li>Placeholder Reference 2</li>
+                            </ol>
+                        </section>
+
+                        <section class="wiki-section">
+                            <h2>Categories</h2>
+                            <div class="wiki-categories">
+                                <span class="wiki-badge">Examples</span>
+                                <span class="wiki-badge">Templates</span>
+                                <span class="wiki-badge">UI</span>
+                            </div>
+                        </section>
+                    </article>
+
+                    <aside class="wiki-infobox" aria-label="Infobox">
+                        <figure class="wiki-infobox-image">
+                            <img src="/files/images/gelincik.png" alt="Gelincik image" />
+                            <figcaption>Gelincik</figcaption>
+                        </figure>
+                        <div class="wiki-infobox-body">
+                            <div class="wiki-infobox-row"><span class="key">Name</span><span class="val">Gelincik</span></div>
+                            <div class="wiki-infobox-row"><span class="key">Type</span><span class="val">Example Entry</span></div>
+                            <div class="wiki-infobox-row"><span class="key">First Appearance</span><span class="val">2025</span></div>
+                            <div class="wiki-infobox-row"><span class="key">Created By</span><span class="val">Jopseps</span></div>
                         </div>
-                    </div>
-                </div>
-                
-
-
-
+                    </aside>
+                </section>
             </main>
-        </div>
-    </body>
 
-
-    <footer class="site-footer">
-        <div class="footer-content" id="footer">
-            <div class="footer-section">
-                <h4>About Me</h4>
-                <p>Yusuf Mert</p>
-                </div>
+            <footer class="site-footer">
+                <div class="footer-content" id="footer">
+                    <div class="footer-section">
+                        <h4>About Me</h4>
+                        <p>Yusuf Mert</p>
+                    </div>
                     <div class="footer-section">
                         <h4>Contact</h4>
-                        <p>E-mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&colon;&#106;&#111;&#112;&#115;&#101;&#112;&#115;&#109;&#101;&#114;&#116;
-                            &commat;&#103;&#109;&#97;&#105;&#108;&period;&#99;&#111;&#109;">jopsepsmert@gmail.com</a></p>
+                        <p>E-mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&colon;&#106;&#111;&#112;&#115;&#101;&#112;&#115;&#109;&#101;&#114;&#116;&commat;&#103;&#109;&#97;&#105;&#108;&period;&#99;&#111;&#109;">jopsepsmert@gmail.com</a></p>
                     </div>
                     <div class="footer-section">
-                     <h4>Links</h4>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../projects.html">Projects</a></li>
-                        <li><a href="../contacts.html">Contacts</a></li>
-                    </ul>
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../projects.html">Projects</a></li>
+                            <li><a href="../contacts.html">Contacts</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        <div class="footer-bottom">
-            © 2025 Jopseps. All rights reserved.
+                <div class="footer-bottom">
+                    © 2025 Jopseps. All rights reserved.
+                </div>
+            </footer>
         </div>
-    </footer>
-    
-    <script src="/files/js/features.js"></script>
 
+        <script src="/files/js/features.js"></script>
+        <script src="/files/js/tisspage.js"></script>
+    </body>
 </html>
 

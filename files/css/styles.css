@@ -308,3 +308,145 @@
             border-top: 1px solid #444;
             padding-top: 10px;
         }
+
+        /* --- Wiki styles --- */
+        .wiki-grid{
+            display: grid;
+            grid-template-columns: 240px 1fr 320px;
+            grid-template-areas: "toc article infobox";
+            gap: 20px;
+            padding: 20px 10%;
+            align-items: start;
+        }
+
+        .wiki-article{
+            grid-area: article;
+            background-color: transparent;
+        }
+
+        .wiki-title{
+            font-size: 220%;
+            margin: 8px 0 12px 0;
+        }
+
+        .wiki-summary{
+            font-size: 105%;
+            opacity: 0.95;
+        }
+
+        .wiki-section{
+            margin-top: 24px;
+        }
+
+        .wiki-section h2{
+            font-size: 140%;
+            margin: 12px 0 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.15);
+            padding-bottom: 4px;
+        }
+
+        .wiki-section h3{
+            font-size: 120%;
+            margin: 10px 0 6px 0;
+        }
+
+        .wiki-toc{
+            grid-area: toc;
+            position: sticky;
+            top: 12px;
+            background-color: #ffffff;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+            padding: 12px;
+            max-height: calc(100vh - 24px);
+            overflow: auto;
+        }
+
+        .wiki-toc-title{
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        #wiki-toc-list{
+            list-style: decimal;
+            padding-left: 18px;
+        }
+
+        #wiki-toc-list li{
+            margin: 4px 0;
+        }
+
+        .wiki-infobox{
+            grid-area: infobox;
+            position: sticky;
+            top: 12px;
+            background-color: #ffffff;
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .wiki-infobox-image img{
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .wiki-infobox-image figcaption{
+            text-align: center;
+            margin-top: 6px;
+            font-size: 90%;
+            opacity: 0.9;
+        }
+
+        .wiki-infobox-body{
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 10px;
+        }
+
+        .wiki-infobox-row{
+            display: contents;
+        }
+
+        .wiki-infobox-row .key{
+            font-weight: 700;
+        }
+
+        .wiki-infobox-row .val{
+            text-align: right;
+        }
+
+        .wiki-categories{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .wiki-badge{
+            display: inline-block;
+            padding: 4px 8px;
+            border: 1px solid #c8c8c8;
+            border-radius: 999px;
+            background-color: #f0f0f0;
+            font-size: 90%;
+        }
+
+        @media (max-width: 1100px){
+            .wiki-grid{
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "infobox"
+                    "article"
+                    "toc";
+                padding: 16px 5%;
+            }
+            .wiki-toc, .wiki-infobox{
+                position: relative;
+                top: unset;
+                max-height: none;
+            }
+        }
