@@ -104,6 +104,40 @@ function applyColorScheme(){
             badge.style.color = (colorScheme === "dark") ? "white" : "black";
         });
     }
+
+    // Calendar components
+    let calendarContainer = document.querySelector(".calendar-container");
+    if(calendarContainer){
+        calendarContainer.style.backgroundColor = (colorScheme === "dark") ? "rgb(30, 30, 30)" : "#f8f6f3";
+        calendarContainer.style.borderColor = (colorScheme === "dark") ? "rgb(80, 80, 80)" : "#e0dcd5";
+    }
+
+    let calendarTitle = document.querySelector(".calendar-title");
+    if(calendarTitle){
+        calendarTitle.style.color = (colorScheme === "dark") ? "white" : "#333";
+    }
+
+    let monthNames = document.querySelectorAll(".month-name");
+    if(monthNames.length > 0){
+        monthNames.forEach(monthName =>{
+            monthName.style.color = (colorScheme === "dark") ? "white" : "#333";
+        });
+    }
+
+    let daysHeaders = document.querySelectorAll(".days-header");
+    if(daysHeaders.length > 0){
+        daysHeaders.forEach(header =>{
+            header.style.color = (colorScheme === "dark") ? "rgb(180, 180, 180)" : "#666";
+            header.style.borderBottomColor = (colorScheme === "dark") ? "rgb(100, 100, 100)" : "#ccc";
+        });
+    }
+
+    let dayCells = document.querySelectorAll(".day-cell");
+    if(dayCells.length > 0){
+        dayCells.forEach(cell =>{
+            cell.style.color = (colorScheme === "dark") ? "rgb(200, 200, 200)" : "#555";
+        });
+    }
 }
 
 // yeah pretty long name
