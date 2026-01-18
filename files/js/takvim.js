@@ -140,6 +140,16 @@ function transformIntoSpecialCalendar(){
     return calendar;
 }
 
+function transformIntoSpecialCalendar(day, month, year = 2000){
+    let gregorian = new GregorianCalendar(day, month, year);
+    let dayCount = gregorian.sumAllDays();
+    let calendar = new Calendar(dayCount);
+
+    console.log(day, month, year);
+    console.log(calendar.day, calendar.month);
+    console.log(calendar.dayName, calendar.monthName);
+}
+
 function generateCalendar() {
     const calendarGrid = document.getElementById('calendarGrid');
     if (!calendarGrid) return; // no calendar
