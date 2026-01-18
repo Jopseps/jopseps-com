@@ -187,6 +187,7 @@ function generateCalendar() {
         monthBox.appendChild(daysGrid);
 
         calendarGrid.appendChild(monthBox);
+        applyColorScheme() // dark mode function
     }
 }
 
