@@ -547,11 +547,41 @@
             }
             .calendar-container{
                 padding: 20px;
+                margin: 10px;
+            }
+            .calendar-title{
+                font-size: 32px;
+                letter-spacing: 8px;
+                margin-bottom: 20px;
+            }
+            .month-box:nth-child(16){
+                grid-column: span 2;
             }
         }
 
         @media (max-width: 450px){
             .calendar-grid{
                 grid-template-columns: 1fr;
+            }
+            .calendar-container{
+                padding: 15px;
+                margin: 8px;
+            }
+            .calendar-title{
+                font-size: 24px;
+                letter-spacing: 5px;
+                margin-bottom: 15px;
+            }
+            .month-box:nth-child(16){
+                grid-column: 1;
+            }
+            .month-name{
+                font-size: 16px;
+            }
+            .days-header{
+                font-size: 10px;
+            }
+            .days-grid{
+                font-size: 12px;
             }
         }
