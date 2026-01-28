@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <body style="background-color: rgb(187, 187, 187);" class="background">
+
+        <link rel="stylesheet" href="/files/css/fastreader.css">
+
+        <title>Jopseps - FastReader</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    </head>
+
+    <body>        
+        <div class="site-wrapper">
+            <main class="site-content">
+                <div class="container-right">
+                    <button id="darkModeButton" onclick="switchColorScheme()">dark mode</button>
+                </div>
+
+                <h1 style="text-align: center; font-size: 300%; padding-top: 1%;" class="straightText">Fast Reader</h1>
+                
+                <div class="interactiveText-wrapper" style="justify-content: flex-start; padding-left: 10%; padding-top: 15px;">
+                    <a href="/index.html"><h3 class="interactiveText" style="text-align: left; font-weight: 900;">Back to Home</h3></a>
+                </div>
+
+                
+                <div id="guide" style="text-align: center; padding: 20px; background-color: #fff; margin: 20px auto; max-width: 600px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 style="color: #333; margin-bottom: 10px;" class="noDarkMode">Quick Guide</h3>
+                    <p style="color: #666; margin: 8px 0; font-size: 0.95rem;" class="noDarkMode">
+                        1. Paste or type your text below<br>
+                        2. Click <strong>Enter</strong><br>
+                        3. Read the text above with fast reading formatting
+                    </p>
+                </div>
+
+                <div id="readBox">
+                    
+                </div>
+
+                <div class="container">
+                    <textarea type="text" name="Text Input" id="textInput" rows="20%"></textarea>
+
+                </div>
+
+                <div class="container" style="padding-top: 0.5%;">
+                    <button style="margin-left: 1%; padding: 0.5%; font-size: larger;" onclick="getText()">Enter</button>
+                </div>
+
+                
+            </main>
+        </div>
+    </body>
+    
+    <footer class="site-footer"></footer>
+
+    <script src="/files/js/footer.js"></script>
+    <script src="/files/js/fastreader.js"></script>
+    <script src="/files/js/features.js"></script>
+
+
+
+</html>
