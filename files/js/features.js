@@ -55,7 +55,10 @@ function applyColorScheme(){
     if(allTexts.length > 0){
         allTexts.forEach(allText =>{
             console.log("!siteFooter.contains(allText): ", !siteFooter.contains(allText))
-            if(!siteFooter.contains(allText) && !allText.classList.contains("noDarkMode")){
+            if(!siteFooter.contains(allText) && !allText.classList.contains("noDarkMode")
+            && !allText.parentElement.classList.contains("noDarkMode")
+            && !allText.parentElement.parentElement.classList.contains("noDarkMode") 
+            ){
                 allText.style.color = (colorScheme === "dark") ? "white" : "black";
             }
         });
