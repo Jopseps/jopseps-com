@@ -3,12 +3,17 @@ class feedCard{
     description;
     image;
     link;
+    // These two are for placeholders
+    basicWidth;
+    basicHeight;
 
     constructor(t,d,i,l){
         this.title = t;
         this.description = d;
         this.image = i;
         this.link = l;
+        this.basicWidth = 500;
+        this.basicHeight = 380;
     }
 }
 
@@ -19,8 +24,9 @@ let projectCardClassName = "project-card-P"
 let projectInfoClassName = "project-info-P"
 
 function TurnIntoRegex(feedElement){
+    let isPlaceHolder = feedElement.image == "placeholder" ? true : false;
     let projectTitle = feedElement.title;
-    let projectImage = feedElement.image;
+    let projectImage = isPlaceHolder ? `https://picsum.photos/${basicWidth}/${basicHeight}` : feedElement.image;
     let projectDescription = feedElement.description;
     let projectLink = feedElement.link
 
@@ -44,8 +50,9 @@ function TurnIntoRegex(feedElement){
 function multipleTurnIntoRegexes(rawFeedData){
     let regex = ""
     for(let i = 0; i < rawFeedData.length; i++){
+        let isPlaceHolder = rawFeedData[i].image == "placeholder" ? true : false;
         let projectTitle = rawFeedData[i].title;
-        let projectImage = rawFeedData[i].image;
+        let projectImage = isPlaceHolder ? `https://picsum.photos/${basicWidth}/${basicHeight}` : rawFeedData[i].image;
         let projectDescription = rawFeedData[i].description;
         let projectLink = rawFeedData[i].link
 
