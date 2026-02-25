@@ -4,21 +4,21 @@ class feedCard{
     image;
     link;
     // These two are for placeholders
-    basicWidth;
-    basicHeight;
+    static basicWidth;
+    static basicHeight;
 
     constructor(t,d,i,l){
         this.title = t;
         this.description = d;
         this.image = i;
         this.link = l;
-        this.basicWidth = 500;
-        this.basicHeight = 380;
     }
 }
 
-// Raw feed Element into html regex
+feedCard.basicWidth = 500;
+feedCard.basicHeight = 380;
 
+// Raw feed Element into html regex
 let projectWrapperClassName = "project-wrapper-P"
 let projectCardClassName = "project-card-P"
 let projectInfoClassName = "project-info-P"
@@ -26,7 +26,7 @@ let projectInfoClassName = "project-info-P"
 function TurnIntoRegex(feedElement){
     let isPlaceHolder = feedElement.image == "placeholder" ? true : false;
     let projectTitle = feedElement.title;
-    let projectImage = isPlaceHolder ? `https://picsum.photos/${basicWidth}/${basicHeight}` : feedElement.image;
+    let projectImage = isPlaceHolder ? `https://picsum.photos/${feedCard.basicWidth}/${feedCard.basicHeight}` : feedElement.image;
     let projectDescription = feedElement.description;
     let projectLink = feedElement.link
 
@@ -52,7 +52,7 @@ function multipleTurnIntoRegexes(rawFeedData){
     for(let i = 0; i < rawFeedData.length; i++){
         let isPlaceHolder = rawFeedData[i].image == "placeholder" ? true : false;
         let projectTitle = rawFeedData[i].title;
-        let projectImage = isPlaceHolder ? `https://picsum.photos/${basicWidth}/${basicHeight}` : rawFeedData[i].image;
+        let projectImage = isPlaceHolder ? `https://picsum.photos/${feedCard.basicWidth}/${bfeedCard.asicHeight}` : rawFeedData[i].image;
         let projectDescription = rawFeedData[i].description;
         let projectLink = rawFeedData[i].link
 
@@ -141,10 +141,4 @@ function jsonToObjects(json){
         return json
 
     }
-}
-
-// well it will work a little bit weird
-function objectsToObjects(objectArray){
-    
-
 }
