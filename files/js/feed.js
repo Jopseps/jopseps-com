@@ -52,7 +52,7 @@ function multipleTurnIntoRegexes(rawFeedData){
     for(let i = 0; i < rawFeedData.length; i++){
         let isPlaceHolder = rawFeedData[i].image == "placeholder" ? true : false;
         let projectTitle = rawFeedData[i].title;
-        let projectImage = isPlaceHolder ? `https://picsum.photos/${feedCard.basicWidth}/${bfeedCard.asicHeight}` : rawFeedData[i].image;
+        let projectImage = isPlaceHolder ? `https://picsum.photos/${feedCard.basicWidth}/${feedCard.basicHeight}` : rawFeedData[i].image;
         let projectDescription = rawFeedData[i].description;
         let projectLink = rawFeedData[i].link
 
