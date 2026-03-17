@@ -151,14 +151,53 @@ function transformIntoSpecialCalendarOther(day, month, year = 2000){
     console.log(calendar.dayName, calendar.monthName);
 }
 
-function generateCalendar() {
+function applySpecialDays(specialDays, month, dayCell, day) {
+    for (const entry of specialDays) {
+        if (entry.month !== month) continue;
+
+        const isSingle = entry.day !== undefined;
+        const isRange = entry.dayStart !== undefined && entry.dayEnd !== undefined;
+
+        if (isSingle && entry.day === day){
+            dayCell.classList.add('special-day');
+            dayCell.style.setProperty('--special-color', entry.color);
+            dayCell.title = entry.label;
+            break;
+        }
+
+        if (isRange && day >= entry.dayStart && day <= entry.dayEnd){
+            dayCell.style.setProperty('--special-color', entry.color);
+            dayCell.title = entry.label;
+
+            if (day === entry.dayStart){
+                dayCell.classList.add('special-range-start');
+            } else if (day === entry.dayEnd){
+                dayCell.classList.add('special-range-end');
+            } else {
+                dayCell.classList.add('special-range-mid');
+            }
+            break;
+        }
+    }
+}
+
+async function generateCalendar(){
     const calendarGrid = document.getElementById('calendarGrid');
     if (!calendarGrid) return; // no calendar
+
+    let specialDays = [];
+    try {
+        const res = await fetch('/files/json/special_days.json');
+        const data = await res.json();
+        specialDays = data.specialDays || [];
+    } catch(e){
+        console.warn('Could not load special_days.json', e);
+    }
     
     const today = transformIntoSpecialCalendar();
     const dayNames = Object.values(Calendar.dayNames).map(name => name[0]); // first letters
 
-    for (let m = 1; m <= 16; m++) {
+    for (let m = 1; m <= 16; m++){
         const monthBox = document.createElement('div');
         monthBox.className = 'month-box';
 
@@ -183,26 +222,29 @@ function generateCalendar() {
         daysGrid.className = 'days-grid';
         
         const numDays = Calendar.monthDays[m];
-        for (let d = 1; d <= numDays; d++) {
+        for (let d = 1; d <= numDays; d++){
             const dayCell = document.createElement('div');
             dayCell.className = 'day-cell';
             dayCell.textContent = d;
 
             // today
-            if (today.month === m && today.day === d) {
+            if(today.month === m && today.day === d){
                 dayCell.classList.add('today');
             }
+
+            // special days
+            applySpecialDays(specialDays, m, dayCell, d);
 
             daysGrid.appendChild(dayCell);
         }
         monthBox.appendChild(daysGrid);
 
         calendarGrid.appendChild(monthBox);
-        applyColorScheme() // dark mode function
+        applyColorScheme(); // dark mode function
     }
 }
 
 // init
-if (typeof document !== 'undefined') {
+if(typeof document !== 'undefined'){
     document.addEventListener('DOMContentLoaded', generateCalendar);
 }

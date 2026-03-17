@@ -541,6 +541,47 @@
             transform: translate(-50%, -50%);
         }
 
+        /* Special day single underline */
+        .day-cell.special-day::before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: var(--special-color, #e53935);
+            border-radius: 2px;
+        }
+
+        /* Special day ranges and continuous underline bar */
+        .day-cell.special-range-start::before,
+        .day-cell.special-range-mid::before,
+        .day-cell.special-range-end::before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 2px;
+            background-color: var(--special-color, #e53935);
+        }
+
+        .day-cell.special-range-start::before{
+            left: 20%;
+            right: 0;
+            border-radius: 2px 0 0 2px;
+        }
+
+        .day-cell.special-range-mid::before{
+            left: 0;
+            right: 0;
+            border-radius: 0;
+        }
+
+        .day-cell.special-range-end::before{
+            left: 0;
+            right: 20%;
+            border-radius: 0 2px 2px 0;
+        }
+
         @media (max-width: 700px){
             .calendar-grid{
                 grid-template-columns: repeat(2, 1fr);
