@@ -151,6 +151,21 @@ function transformIntoSpecialCalendarOther(day, month, year = 2000){
     console.log(calendar.dayName, calendar.monthName);
 }
 
+function showSpecialDayPopup(label, color, targetElement){
+    const popup = document.getElementById('specialDayPopup');
+    if(!popup) return;
+    
+    popup.textContent = label;
+    popup.style.display = 'block';
+    
+    const rect = targetElement.getBoundingClientRect();
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    
+    popup.style.left = `${rect.left + scrollX + (rect.width / 2)}px`;
+    popup.style.top = `${rect.top + scrollY - 10}px`;
+}
+
 function applySpecialDays(specialDays, month, dayCell, day) {
     for (const entry of specialDays) {
         if (entry.month !== month) continue;
@@ -162,6 +177,11 @@ function applySpecialDays(specialDays, month, dayCell, day) {
             dayCell.classList.add('special-day');
             dayCell.style.setProperty('--special-color', entry.color);
             dayCell.title = entry.label;
+
+            dayCell.onclick = (e) => {
+                e.stopPropagation();
+                showSpecialDayPopup(entry.label, entry.color, dayCell);
+            };
             break;
         }
 
@@ -176,6 +196,11 @@ function applySpecialDays(specialDays, month, dayCell, day) {
             } else {
                 dayCell.classList.add('special-range-mid');
             }
+
+            dayCell.onclick = (e) => {
+                e.stopPropagation();
+                showSpecialDayPopup(entry.label, entry.color, dayCell);
+            };
             break;
         }
     }
@@ -242,6 +267,11 @@ async function generateCalendar(){
         calendarGrid.appendChild(monthBox);
         applyColorScheme(); // dark mode function
     }
+
+    document.addEventListener('click', () => {
+        const popup = document.getElementById('specialDayPopup');
+        if(popup) popup.style.display = 'none';
+    });
 }
 
 // init

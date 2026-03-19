@@ -479,6 +479,22 @@
             color: #333;
         }
 
+        .special-day-popup{
+            position: absolute;
+            background-color: #2a2d32;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            z-index: 2000;
+            display: none;
+            pointer-events: none;
+            transform: translate(-50%, -100%);
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
         .calendar-grid{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
