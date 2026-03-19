@@ -1,5 +1,11 @@
 {
     "specialDays": [
-        
+        {
+            "month": 4,
+            "dayStart": 6,
+            "dayEnd": 15,
+            "label": "le Armageddon",
+            "color": "red"
+        }
     ]
 }
