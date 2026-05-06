@@ -566,7 +566,9 @@
             right: 20%;
             height: 2px;
             background-color: var(--special-color, #e53935);
+            border: 0.5px solid #000;
             border-radius: 2px;
+            box-sizing: content-box;
         }
 
         /* Special day ranges and continuous underline bar */
@@ -578,23 +580,29 @@
             bottom: 0;
             height: 2px;
             background-color: var(--special-color, #e53935);
+            border: 0.5px solid #000;
+            box-sizing: content-box;
         }
 
         .day-cell.special-range-start::before{
             left: 20%;
             right: 0;
+            border-right: none;
             border-radius: 2px 0 0 2px;
         }
 
         .day-cell.special-range-mid::before{
             left: 0;
             right: 0;
+            border-left: none;
+            border-right: none;
             border-radius: 0;
         }
 
         .day-cell.special-range-end::before{
             left: 0;
             right: 20%;
+            border-left: none;
             border-radius: 0 2px 2px 0;
         }
 
